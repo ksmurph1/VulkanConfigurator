@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<struct type="VkCommandPoolCreateInfo">
+ <field name="sType" value="VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO" type="VkStructureType"/>
+</struct>
+<struct type="VkSwapchainCreateInfoKHR">
+   <field name="pNext" value="nullptr" type="const void *"/>
+   <field name="imageArrayLayers" value="1" type="int32_t"/>
+   <field name="pQueueFamilyIndices" value="1" type="const uint32_t *"/>
+</struct>
+<struct type="VkPipelineRasterizationStateCreateInfo">
+   <field name="lineWidth" value="1.0" type="float"/>
+</struct>
+<struct type="VkApplicationInfo">
+   <field name="pEngineName" value="vulkanExample" type="const char *"/>
+   <field name="apiVersion" value="4194304" type="uint32_t"/>
+</struct>

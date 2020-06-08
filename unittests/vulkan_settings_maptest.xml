@@ -1,0 +1,17 @@
+<buffer>
+      <struct type="VkFramebufferCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO" type="VkStructureType"/>
+         <field name="pNext" value="nullptr" type="const void *"/>
+         <field name="attachmentCount" value="2" type="uint32_t"/>
+         <field name="layers" value="1" type="uint32_t"/>
+      </struct>
+      <struct type="VkBufferCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO" type="VkStructureType"/>
+      </struct>
+</buffer>
+   <synchronization>
+      <struct type="VkFenceCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_FENCE_CREATE_INFO" type="VkStructureType"/>
+         <field name="flags" value="VK_FENCE_CREATE_SIGNALED_BIT" type="uint32_t"/>
+      </struct> 
+   </synchronization>

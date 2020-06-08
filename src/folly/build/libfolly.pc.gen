@@ -1,0 +1,11 @@
+prefix=/usr/local
+exec_prefix=/usr/local
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libfolly
+Description: Facebook (Folly) C++ library
+Version: master
+Cflags: -I${includedir} $<$<COMPILE_LANGUAGE:CUDA>:SHELL:-Xcompiler -pthread> $<$<NOT:$<COMPILE_LANGUAGE:CUDA>>:-pthread>  -std=gnu++1z -I/usr/include
+Libs: -L${libdir} -lfolly
+Libs.private: /usr/lib/libboost_filesystem.so /usr/lib/libboost_program_options.so /usr/lib/libboost_regex.so /usr/lib/libboost_system.so /usr/lib/libboost_thread.so -pthread /usr/lib/libboost_chrono.so /usr/lib/libboost_date_time.so /usr/lib/libboost_atomic.so /usr/lib/x86_64-linux-gnu/libdouble-conversion.so -ldl

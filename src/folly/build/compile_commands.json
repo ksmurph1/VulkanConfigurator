@@ -1,0 +1,157 @@
+[
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/FileUtil.cpp.o -c /home/kerry/vulkan/folly/FileUtil.cpp",
+  "file": "/home/kerry/vulkan/folly/FileUtil.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/Format.cpp.o -c /home/kerry/vulkan/folly/Format.cpp",
+  "file": "/home/kerry/vulkan/folly/Format.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/ScopeGuard.cpp.o -c /home/kerry/vulkan/folly/ScopeGuard.cpp",
+  "file": "/home/kerry/vulkan/folly/ScopeGuard.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/concurrency/CacheLocality.cpp.o -c /home/kerry/vulkan/folly/concurrency/CacheLocality.cpp",
+  "file": "/home/kerry/vulkan/folly/concurrency/CacheLocality.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/detail/AtFork.cpp.o -c /home/kerry/vulkan/folly/detail/AtFork.cpp",
+  "file": "/home/kerry/vulkan/folly/detail/AtFork.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/detail/RangeCommon.cpp.o -c /home/kerry/vulkan/folly/detail/RangeCommon.cpp",
+  "file": "/home/kerry/vulkan/folly/detail/RangeCommon.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/detail/RangeSse42.cpp.o -c /home/kerry/vulkan/folly/detail/RangeSse42.cpp",
+  "file": "/home/kerry/vulkan/folly/detail/RangeSse42.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/detail/Sse.cpp.o -c /home/kerry/vulkan/folly/detail/Sse.cpp",
+  "file": "/home/kerry/vulkan/folly/detail/Sse.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/detail/StaticSingletonManager.cpp.o -c /home/kerry/vulkan/folly/detail/StaticSingletonManager.cpp",
+  "file": "/home/kerry/vulkan/folly/detail/StaticSingletonManager.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/detail/ThreadLocalDetail.cpp.o -c /home/kerry/vulkan/folly/detail/ThreadLocalDetail.cpp",
+  "file": "/home/kerry/vulkan/folly/detail/ThreadLocalDetail.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/hash/SpookyHashV1.cpp.o -c /home/kerry/vulkan/folly/hash/SpookyHashV1.cpp",
+  "file": "/home/kerry/vulkan/folly/hash/SpookyHashV1.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/hash/SpookyHashV2.cpp.o -c /home/kerry/vulkan/folly/hash/SpookyHashV2.cpp",
+  "file": "/home/kerry/vulkan/folly/hash/SpookyHashV2.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/lang/ColdClass.cpp.o -c /home/kerry/vulkan/folly/lang/ColdClass.cpp",
+  "file": "/home/kerry/vulkan/folly/lang/ColdClass.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/lang/SafeAssert.cpp.o -c /home/kerry/vulkan/folly/lang/SafeAssert.cpp",
+  "file": "/home/kerry/vulkan/folly/lang/SafeAssert.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/memory/ThreadCachedArena.cpp.o -c /home/kerry/vulkan/folly/memory/ThreadCachedArena.cpp",
+  "file": "/home/kerry/vulkan/folly/memory/ThreadCachedArena.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/memory/detail/MallocImpl.cpp.o -c /home/kerry/vulkan/folly/memory/detail/MallocImpl.cpp",
+  "file": "/home/kerry/vulkan/folly/memory/detail/MallocImpl.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/net/NetOps.cpp.o -c /home/kerry/vulkan/folly/net/NetOps.cpp",
+  "file": "/home/kerry/vulkan/folly/net/NetOps.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/net/detail/SocketFileDescriptorMap.cpp.o -c /home/kerry/vulkan/folly/net/detail/SocketFileDescriptorMap.cpp",
+  "file": "/home/kerry/vulkan/folly/net/detail/SocketFileDescriptorMap.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/portability/Builtins.cpp.o -c /home/kerry/vulkan/folly/portability/Builtins.cpp",
+  "file": "/home/kerry/vulkan/folly/portability/Builtins.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/portability/Fcntl.cpp.o -c /home/kerry/vulkan/folly/portability/Fcntl.cpp",
+  "file": "/home/kerry/vulkan/folly/portability/Fcntl.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/portability/Malloc.cpp.o -c /home/kerry/vulkan/folly/portability/Malloc.cpp",
+  "file": "/home/kerry/vulkan/folly/portability/Malloc.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/portability/Sched.cpp.o -c /home/kerry/vulkan/folly/portability/Sched.cpp",
+  "file": "/home/kerry/vulkan/folly/portability/Sched.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/portability/Sockets.cpp.o -c /home/kerry/vulkan/folly/portability/Sockets.cpp",
+  "file": "/home/kerry/vulkan/folly/portability/Sockets.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/portability/String.cpp.o -c /home/kerry/vulkan/folly/portability/String.cpp",
+  "file": "/home/kerry/vulkan/folly/portability/String.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/portability/SysFile.cpp.o -c /home/kerry/vulkan/folly/portability/SysFile.cpp",
+  "file": "/home/kerry/vulkan/folly/portability/SysFile.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/portability/SysResource.cpp.o -c /home/kerry/vulkan/folly/portability/SysResource.cpp",
+  "file": "/home/kerry/vulkan/folly/portability/SysResource.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/portability/SysStat.cpp.o -c /home/kerry/vulkan/folly/portability/SysStat.cpp",
+  "file": "/home/kerry/vulkan/folly/portability/SysStat.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/portability/SysUio.cpp.o -c /home/kerry/vulkan/folly/portability/SysUio.cpp",
+  "file": "/home/kerry/vulkan/folly/portability/SysUio.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/portability/Time.cpp.o -c /home/kerry/vulkan/folly/portability/Time.cpp",
+  "file": "/home/kerry/vulkan/folly/portability/Time.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/portability/Unistd.cpp.o -c /home/kerry/vulkan/folly/portability/Unistd.cpp",
+  "file": "/home/kerry/vulkan/folly/portability/Unistd.cpp"
+},
+{
+  "directory": "/home/kerry/vulkan/build",
+  "command": "/usr/bin/g++-9  -DFOLLY_XLOG_STRIP_PREFIXES=\\\"/home/kerry/vulkan:/home/kerry/vulkan/build\\\" -D_GNU_SOURCE -D_REENTRANT -I/home/kerry/vulkan -I/home/kerry/vulkan/build  -g -g -Wall -Wextra   -g -std=gnu++1z -finput-charset=UTF-8 -fsigned-char -Wall -Wno-deprecated -Wno-deprecated-declarations -Wno-sign-compare -Wno-unused -Wunused-label -Wunused-result -Wshadow-compatible-local -Wno-noexcept-type -faligned-new -fopenmp -o CMakeFiles/folly_base.dir/folly/synchronization/SanitizeThread.cpp.o -c /home/kerry/vulkan/folly/synchronization/SanitizeThread.cpp",
+  "file": "/home/kerry/vulkan/folly/synchronization/SanitizeThread.cpp"
+}
+]

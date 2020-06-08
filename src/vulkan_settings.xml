@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<categories>
+   <memory>
+      <struct type="VkMemoryAllocateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO" type="VkStructureType"/>
+      </struct>
+      <struct type="VkMappedMemoryRange">
+         <field name="sType" value="VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE" type="VkStructureType"/>
+      </struct>
+   </memory>
+   <commandbuffer>
+      <struct type="VkCommandBufferAllocateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO" type="VkStructureType"/>
+         <field name="level" value="VK_COMMAND_BUFFER_LEVEL_PRIMARY" type="VkCommandBufferLevel"/>
+      </struct>
+      <struct type="VkCommandBufferBeginInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO" type="VkStructureType"/>
+      </struct>
+      <struct type="VkCommandBufferInheritanceInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO" type="VkStructureType"/>
+      </struct>
+   </commandbuffer>
+   <commandpool>
+      <struct type="VkCommandPoolCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO" type="VkStructureType"/>
+         <field name="flags" value="VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT" type="VkCommandPoolCreateFlags"/>
+      </struct>
+   </commandpool>
+   <renderpass>
+      <struct type="VkRenderPassBeginInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO" type="VkStructureType"/>
+      </struct>
+      <struct type="VkRenderPassCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO" type="VkStructureType"/>
+         <field name="attachmentCount" value="2" type="uint32_t"/>
+         <field name="pAttachments" value="&amp;id:1,&amp;id:2" type="const VkAttachmentDescription *"/>
+         <field name="subpassCount" value="1" type="uint32_t"/>
+         <field name="pSubpasses" value="&amp;id:1" type="const VkSubpassDescription *"/>
+         <field name="dependencyCount" value="2" type="uint32_t"/>
+         <field name="pDependencies" value="&amp1;id:1,&amp1;id:2" type="const VkSubpassDependency *"/>
+      </struct>
+      <struct type="VkSubpassDescription" id="1">
+         <field name="pipelineBindPoint" value="VK_PIPELINE_BIND_POINT_GRAPHICS" type="VkPipelineBindPoint"/>
+         <field name="colorAttachmentCount" value="1" type="uint32_t"/>
+         <field name="pColorAttachments" value="&amp;id:1" type="const VkAttachmentReference *"/>
+         <field name="pDepthStencilAttachment" value="&amp;id:2" type="const VkAttachmentReference *"/>
+         <field name="inputAttachmentCount" value="0" type="uint32_t"/>
+         <field name="pInputAttachments" value="nullptr" type="const VkAttachmentReference *"/>
+         <field name="preserveAttachmentCount" value="0" type="uint32_t"/>
+         <field name="pPreserveAttachments" value="nullptr" type="const uint32_t *"/>
+         <field name="pResolveAttachments" value="nullptr" type="const VkAttachmentReference *"/>
+      </struct>
+      <struct type="VkSubpassDependency" id="1">
+         <field name="srcSubpass" value="4294967295" type="uint32_t"/>
+         <field name="dstSubpass" value="0" type="uint32_t"/>
+         <field name="srcStageMask" value="VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT" type="VkPipelineStageFlags"/>
+         <field name="dstStageMask" value="VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT" type="VkPipelineStageFlags"/>
+         <field name="srcAccessMask" value="VK_ACCESS_MEMORY_READ_BIT" type="VkAccessFlags"/>
+         <field name="dstAccessMask" value="VK_ACCESS_COLOR_ATTACHMENT_READ_BIT | VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT"
+         type="VkAccessFlags"/>
+         <field name="dependencyFlags" value="VK_DEPENDENCY_BY_REGION_BIT" type="VkDependencyFlags"/>
+      </struct>
+      <struct type="VkSubpassDependency" id="2">
+         <field name="srcSubpass" value="0" type="uint32_t"/>
+         <field name="dstSubpass" value="4294967295" type="uint32_t"/>
+         <field name="srcStageMask" value="VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT" type="VkPipelineStageFlags"/>
+         <field name="dstStageMask" value="VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT" type="VkPipelineStageFlags"/>
+         <field name="srcAccessMask" value="VK_ACCESS_COLOR_ATTACHMENT_READ_BIT | VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT" 
+         type="VkAccessFlags"/>
+         <field name="dstAccessMask" value="VK_ACCESS_MEMORY_READ_BIT" type="VkAccessFlags"/>
+         <field name="dependencyFlags" value="VK_DEPENDENCY_BY_REGION_BIT" type="VkDependencyFlags"/>
+      </struct>
+   </renderpass>
+   <barrier>
+      <struct type="VkImageMemoryBarrier">
+         <field name="sType" value="VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER" type="VkStructureType"/>
+         <field name="srcQueueFamilyIndex" value="4294967295" type="uint32_t"/>
+         <field name="dstQueueFamilyIndex" value="4294967295" type="uint32_t"/>
+      </struct>
+      <struct type="VkBufferMemoryBarrier">
+         <field name="sType" value="VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER" type="VkStructureType"/>
+         <field name="srcQueueFamilyIndex" value="4294967295" type="uint32_t"/>
+         <field name="dstQueueFamilyIndex" value="4294967295" type="uint32_t"/>
+      </struct>
+      <struct type="VkMemoryBarrier">
+         <field name="sType" value="VK_STRUCTURE_TYPE_MEMORY_BARRIER" type="VkStructureType"/>
+         <field name="viewType" value="VK_IMAGE_VIEW_TYPE_2D" type="VkImageViewType"/>
+      </struct>
+   </barrier>
+   <image>
+      <struct type="VkImageCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO" type="VkStructureType"/>
+         <field name="pNext" value="nullptr" type="const void *"/>
+         <field name="viewType" value="VK_IMAGE_VIEW_TYPE_2D" type="VkImageViewType"/>
+         <field name="mipLevels" value="1" type="uint32_t"/>
+         <field name="arrayLayers" value="1" type="uint32_t"/>
+         <field name="samples" value="VK_SAMPLE_COUNT_1_BIT" type="VkSampleCountFlagBits"/>
+         <field name="tiling" value="VK_IMAGE_TILING_OPTIMAL" type="VkImageTiling"/>
+         <field name="usage" value="VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT | VK_IMAGE_USAGE_TRANSFER_SRC_BIT"
+         type="VkImageUsageFlags"/>
+         <field name="flags" value="0" type="VkImageViewCreateFlags"/>
+      </struct>
+      <struct type="VkSamplerCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO" type="VkStructureType"/>
+         <field name="maxAnisotropy" value="1.0" type="float"/>
+      </struct>
+      <struct type="VkImageViewCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO" type="VkStructureType"/>
+         <field name="subresourceRange" value="id:1" type="VkImageSubresourceRange"/>
+      </struct>
+      <struct type="VkViewport"/>
+      <struct type="VkRect2D"/>
+      <struct type="VkDescriptorImageInfo"/>
+      <struct type="VkImageSubresourceRange" id="1">
+         <field name="aspectMask" value="VK_IMAGE_ASPECT_COLOR_BIT" type="VkImageAspectFlags"/>
+         <field name="baseMipLevel" value="0" type="uint32_t"/>
+         <field name="levelCount" value="1" type="uint32_t"/>
+         <field name="baseArrayLayer" value="0" type="uint32_t"/>
+         <field name="layerCount" value="1" type="uint32_t"/>
+      </struct>
+   </image>
+   <submit>
+      <struct type="VkSubmitInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_SUBMIT_INFO" type="VkStructureType"/>
+      </struct>
+   </submit>
+   <buffer>
+      <struct type="VkFramebufferCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO" type="VkStructureType"/>
+         <field name="pNext" value="nullptr" type="const void *"/>
+         <field name="attachmentCount" value="2" type="uint32_t"/>
+         <field name="layers" value="1" type="uint32_t"/>
+      </struct>
+      <struct type="VkBufferCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO" type="VkStructureType"/>
+      </struct>
+   </buffer>
+   <synchronization>
+      <struct type="VkFenceCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_FENCE_CREATE_INFO" type="VkStructureType"/>
+         <field name="flags" value="VK_FENCE_CREATE_SIGNALED_BIT" type="VkFenceCreateFlags"/>
+      </struct>
+      <struct type="VkEventCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_EVENT_CREATE_INFO" type="VkStructureType"/>
+      </struct>
+   </synchronization>
+   <descriptor>
+      <struct type="VkDescriptorPoolCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_EVENT_CREATE_INFO" type="VkStructureType"/>
+      </struct>
+      <struct type="VkDescriptorPoolSize"/>
+      <struct type="VkDescriptorSetLayoutBinding">
+         <field name="descriptorCount" value="1" type="uint32_t"/>
+      </struct>
+      <struct type="VkDescriptorSetLayoutCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO" type="VkStructureType"/>
+      </struct>
+      <struct type="VkDescriptorSetAllocateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO" type="VkStructureType"/>
+      </struct>
+      <struct type="VkWriteDescriptorSet">
+         <field name="sType" value="VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET" type="VkStructureType"/>
+         <field name="descriptorCount" value="1" type="uint32_t"/>
+      </struct>
+   </descriptor>
+   <pipeline>
+      <struct type="VkPipelineLayoutCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO" type="VkStructureType"/>
+         <field name="setLayoutCount" value="1" type="uint32_t"/>
+      </struct>
+      <struct type="VkPipelineVertexInputStateCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO" type="VkStructureType"/>
+      </struct>
+      <struct type="VkPipelineInputAssemblyStateCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO" type="VkStructureType"/>
+      </struct>
+      <struct type="VkPipelineRasterizationStateCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO" type="VkStructureType"/>
+         <field name="flags" value="0" type="VkPipelineRasterizationStateCreateFlags"/>
+         <field name="depthClampEnable" value="VK_FALSE" type="VkBool32"/>
+         <field name="lineWidth" value="1.0" type="float"/>
+      </struct>
+      <struct type="VkPipelineColorBlendAttachmentState"/>
+      <struct type="VkPipelineColorBlendStateCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO" type="VkStructureType"/>
+      </struct>
+      <struct type="VkPipelineDepthStencilStateCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO" type="VkStructureType"/>
+         <field name="compareOp" value="VK_COMPARE_OP_ALWAYS" type="VkCompareOp"/>
+      </struct>
+      <struct type="VkPipelineViewportStateCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO" type="VkStructureType"/>
+         <field name="flags" value="0" type="VkPipelineViewportStateCreateFlags"/>
+      </struct>
+      <struct type="VkPipelineCacheCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO" type="VkStructureType"/>
+      </struct>
+   </pipeline>
+   <vertex>
+      <struct type="VkVertexInputBindingDescription"/>
+      <struct type="VkVertexInputAttributeDescription"/>
+   </vertex>
+   <application>
+      <struct type="VkApplicationInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_APPLICATION_INFO" type="VkStructureType"/>
+         <field name="pApplicationName" vaule="vulkanExample" type="const char *"/>
+         <field name="pEngineName" value="vulkanExample" type="const char *"/>
+         <field name="apiVersion" value="4194304" type="uint32_t"/>
+      </struct>
+      <struct type="VkInstanceCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO" type="VkStructureType"/>
+      </struct>
+   </application>
+   <surface>
+      <struct type="VkXcbSurfaceCreateInfoKHR">
+         <field name="sType" value="VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR" type="VkStructureType"/>
+      </struct>
+   </surface>
+   <swapchain>
+      <struct type="VkSwapchainCreateInfoKHR">
+         <field name="sType" value="VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR" type="VkStructureType"/>
+         <field name="pNext" value="nullptr" type="const void *"/>
+         <field name="imageArrayLayers" value="1" type="int32_t"/>
+         <field name="imageUsage" value="VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT" type="VkImageUsageFlagBits"/>
+         <field name="imageSharingMode" value="VK_SHARING_MODE_EXCLUSIVE" type="VkSharingMode"/>
+         <field name="queueFamilyIndexCount" value="0" type="uint32_t"/>
+         <field name="pQueueFamilyIndices" value="nullptr" type="const uint32_t *"/>
+         <field name="clipped" value="VK_TRUE" type="VkBool32"/>
+      </struct>
+   </swapchain>
+   <componentmapping>
+      <struct type="VkComponentMapping">
+         <field name="r" value="VK_COMPONENT_SWIZZLE_R" type="VkComponentSwizzle"/>
+         <field name="g" value="VK_COMPONENT_SWIZZLE_G" type="VkComponentSwizzle"/>
+         <field name="b" value="VK_COMPONENT_SWIZZLE_B" type="VkComponentSwizzle"/>
+         <field name="a" value="VK_COMPONENT_SWIZZLE_A" type="VkComponentSwizzle"/>
+      </struct>
+   </componentmapping>
+   <attachment>
+      <struct type="VkAttachmentDescription" id="1">
+         <field name="samples" value="VK_SAMPLE_COUNT_1_BIT" type="VkSampleCountFlagBits"/>
+         <field name="loadOp" value="VK_ATTACHMENT_LOAD_OP_CLEAR" type="VkAttachmentLoadOp"/>
+         <field name="storeOp" value="VK_ATTACHMENT_STORE_OP_STORE" type="VkAttachmentStoreOp"/>
+         <field name="stencilLoadOp" value="VK_ATTACHMENT_LOAD_OP_DONT_CARE" type="VkAttachmentLoadOp"/>
+         <field name="stencilStoreOp" value="VK_ATTACHMENT_STORE_OP_DONT_CARE" type="VkAttachmentStoreOp"/>
+         <field name="initialLayout" value="VK_IMAGE_LAYOUT_UNDEFINED" type="VkImageLayout"/>
+         <field name="finalLayout" value="VK_IMAGE_LAYOUT_PRESENT_SRC_KHR" type="VkImageLayout"/>
+      </struct>
+      <struct type="VkAttachmentDescription" id="2">
+         <field name="samples" value="VK_SAMPLE_COUNT_1_BIT" type="VkSampleCountFlagBits"/>
+         <field name="loadOp" value="VK_ATTACHMENT_LOAD_OP_CLEAR" type="VkAttachmentLoadOp"/>
+         <field name="storeOp" value="VK_ATTACHMENT_STORE_OP_STORE" type="VkAttachmentStoreOp"/>
+         <field name="stencilLoadOp" value="VK_ATTACHMENT_LOAD_OP_CLEAR" type="VkAttachmentLoadOp"/>
+         <field name="stencilStoreOp" value="VK_ATTACHMENT_STORE_OP_DONT_CARE" type="VkAttachmentStoreOp"/>
+         <field name="initialLayout" value="VK_IMAGE_LAYOUT_UNDEFINED" type="VkImageLayout"/>
+         <field name="finalLayout" value="VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL" type="VkImageLayout"/>
+      </struct>
+      <struct type="VkAttachmentReference" id="1">
+         <field name="attachment" value="0" type="uint32_t"/>
+         <field name="layout" value="VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL" type="VkImageLayout"/>
+      </struct>
+      <struct type="VkAttachmentReference" id="2">
+         <field name="attachment" value="1" type="uint32_t"/>
+         <field name="layout" value="VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL" type="VkImageLayout"/>
+      </struct>
+   </attachment>
+</categories>

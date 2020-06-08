@@ -1,0 +1,8 @@
+# Hashes of file build rules.
+23fe4456a0fe46f87d0e36699a3a97ed unittests
+626364fcbf872670fa000dd4cbf1e893 unittests/CMakeFiles/vulkan_settings_fieldtest.xml
+626364fcbf872670fa000dd4cbf1e893 unittests/CMakeFiles/vulkan_settings_maptest.xml
+626364fcbf872670fa000dd4cbf1e893 unittests/CMakeFiles/vulkan_settings_testxml.xml
+afa92ad08999791c56bfadd23f7fbef7 unittests/vulkan_settings_fieldtest.xml
+52742d846916319f1469c23927061bd1 unittests/vulkan_settings_maptest.xml
+3646f5b0b3fb9566767265f8fae5cd56 unittests/vulkan_settings_testxml.xml

@@ -1,0 +1,14 @@
+/home/kerry/vulkan/src/folly/build/CMakeFiles/install/strip.dir
+/home/kerry/vulkan/src/folly/build/CMakeFiles/install/local.dir
+/home/kerry/vulkan/src/folly/build/CMakeFiles/install.dir
+/home/kerry/vulkan/src/folly/build/CMakeFiles/list_install_components.dir
+/home/kerry/vulkan/src/folly/build/CMakeFiles/folly_base.dir
+/home/kerry/vulkan/src/folly/build/CMakeFiles/rebuild_cache.dir
+/home/kerry/vulkan/src/folly/build/CMakeFiles/folly.dir
+/home/kerry/vulkan/src/folly/build/CMakeFiles/edit_cache.dir
+/home/kerry/vulkan/src/folly/build/src/CMakeFiles/rebuild_cache.dir
+/home/kerry/vulkan/src/folly/build/src/CMakeFiles/install/strip.dir
+/home/kerry/vulkan/src/folly/build/src/CMakeFiles/install/local.dir
+/home/kerry/vulkan/src/folly/build/src/CMakeFiles/edit_cache.dir
+/home/kerry/vulkan/src/folly/build/src/CMakeFiles/list_install_components.dir
+/home/kerry/vulkan/src/folly/build/src/CMakeFiles/install.dir

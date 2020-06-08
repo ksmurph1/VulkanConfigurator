@@ -1,0 +1,49 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558 
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "build",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-g",
+                "-std=c++2a",
+                "${workspaceFolder}/${fileBasename}",
+                "${workspaceFolder}/ArenaContainers.cpp",
+                "${workspaceFolder}/XmlProcessor.cpp",
+                "${workspaceFolder}/external/imgui/*.cpp",
+                "${workspaceFolder}/StructureTypes.cpp",
+                "${workspaceFolder}/main.cpp",
+                "-L",
+                "${workspaceFolder}/build/",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
+                "-l",
+                "vulkan",
+                "-l",
+                "xcb",
+                "-l",
+                "folly",
+                "-l",
+                "tinyxml2",
+                "-L",
+                "/usr/lib/x86_64-linux-gnu/",
+                "-Wl,-rpath,/usr/lib/x86_64-linux-gnu/",
+                "-l",
+                "jemalloc"
+            ],
+            "options": {
+                "cwd": "/usr/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

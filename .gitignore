@@ -1,0 +1,7 @@
+build/DynamicVulkanConfigurator_run
+build/src/libDynamicVulkanConfigurator_lib.a
+build/src/folly/libfolly.a
+build/unittests/DynamicVulkanConfigurator_tst
+XmlProcessor.xml
+data/*
+*.o

@@ -1,0 +1,10 @@
+<buffer>
+      <struct type="VkFramebufferCreateInfo">
+      </struct>
+      <struct type="VkBufferCreateInfo">
+      </struct>
+</buffer>
+   <synchronization>
+      <struct type="VkFenceCreateInfo">
+      </struct> 
+   </synchronization>
