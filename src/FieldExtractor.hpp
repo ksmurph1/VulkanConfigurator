@@ -22,7 +22,7 @@
       aa::Alloc<char> charAlloc;
 
       template <typename T>
-      void setFieldForStruct(const std::any&);
+      void setFieldForStruct(const char*, const std::any&);
 
       /*template <typename T>
       void setFieldValue(const T&, const std::size_t, const std::any&);*/

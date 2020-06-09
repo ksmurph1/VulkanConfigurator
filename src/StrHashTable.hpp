@@ -3,6 +3,7 @@
 #include <optional>
 #include "get_string_hash.hpp"
 #include "char_array_limits.hpp"
+#include "folly/src/portability/Constexpr.h"
 namespace configuration
 {
     class Configurator;
@@ -77,10 +78,24 @@ class StrHashTable
             return *this;
         }
     };
-
+    char temp[MAX_CHAR_SIZE];
     std::array<Bucket,CHAINSIZE> buckets[size];
 
-     constexpr StrHashTable() :buckets{} {}
+    constexpr StrHashTable() :buckets{} {}
+    constexpr const char * remSpaces(const char* val) noexcept
+    {
+       decltype(size) len=folly::constexpr_strlen(val);
+       decltype(size) decr=0;
+       for (decltype(size) i=0;i < len  && i < MAX_CHAR_SIZE;i++) 
+       {
+          if (*(val+i) != ' ')  //don't copy spaces
+             *(temp+i-decr)=*(val+i);
+          else if (decr < i)
+             decr++;
+       }
+       temp[len-decr]='\0';
+       return temp;
+    } 
    public:
     constexpr StrHashTable(const StrHashTable& src) noexcept : buckets() 
     {
@@ -89,33 +104,36 @@ class StrHashTable
           buckets[i]=src.buckets[i];
        }
     } 
+
     template <std::size_t N,typename=typename std::enable_if_t<N<=size>>
     constexpr static StrHashTable setup(const char*(&strs)[N], const T (&values)[N])
     {
     StrHashTable base;
     bool marked[size]={false};
-
+    
     for (decltype(size) i=0; i < N; i++)
     {
-        decltype(size) hash=getStringHash(strs[i],scaleFactor);
+        const char*str=base.remSpaces(strs[i]);
+        decltype(size) hash=getStringHash(str,scaleFactor);
         std::decay_t<std::remove_extent_t<decltype(buckets)>>& chain= base.buckets[hash];
         if (marked[hash])
         {  
-            chain[chain[0].count+1]=Bucket(strs[i],std::move(values[i]));
+            chain[chain[0].count+1]=Bucket(str,std::move(values[i]));
             chain[0].count+=1;
         }
         else
         {
             marked[hash]=true;
-            chain[0]=Bucket(strs[i],std::move(values[i]));
+            chain[0]=Bucket(str,std::move(values[i]));
         }
     }
     return base;
     }
 
-    constexpr std::optional<T> get(const char* key) const noexcept
+    constexpr std::optional<T> get(const char* key) noexcept
     {
-        decltype(getStringHash(0,0.0)) hash=getStringHash(key,scaleFactor);
+        const char* newKey=remSpaces(key);
+        decltype(getStringHash(0,0.0)) hash=getStringHash(newKey,scaleFactor);
         if (hash < size)
         {
             // find bucket based on hash
@@ -124,9 +142,9 @@ class StrHashTable
             {
                 // compare constexpr written out as strcmp is not yet constexpr
                 std::decay_t<decltype(CHAINSIZE)> j;
-                for(j=0;*(key+j) == chain[i].key[j] && *(key+j) != '\0'; ++j);
+                for(j=0;*(newKey+j) == chain[i].key[j] && *(newKey+j) != '\0'; ++j);
                 
-                if (*(key + j) == '\0')
+                if (*(newKey + j) == '\0')
                 {
                    // found value in chain so return
                    return chain[i].value;

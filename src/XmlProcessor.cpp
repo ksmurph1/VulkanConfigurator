@@ -136,7 +136,7 @@ bool configuration::XmlProcessor::VisitEnter (const tinyxml2::XMLElement & eleme
                   result=false;
                }
                else   
-                  extractor->setFieldForStruct<noQaulType>(fieldVal);
+                  extractor->setFieldForStruct<noQaulType>(getAttribute("name").data(),fieldVal);
               
             },parentType);
             }

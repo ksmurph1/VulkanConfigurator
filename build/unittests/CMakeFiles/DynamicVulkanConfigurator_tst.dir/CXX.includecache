@@ -35,6 +35,8 @@ get_string_hash.hpp
 /home/kerry/vulkan/src/get_string_hash.hpp
 char_array_limits.hpp
 /home/kerry/vulkan/src/char_array_limits.hpp
+folly/src/portability/Constexpr.h
+/home/kerry/vulkan/src/folly/src/portability/Constexpr.h
 
 /home/kerry/vulkan/src/VulkanConfigurator.hpp
 boost/hana/type.hpp
@@ -873,6 +875,28 @@ StructFieldPopulatedTest.hpp
 /home/kerry/vulkan/unittests/StructFieldPopulatedTest.hpp
 
 /home/kerry/vulkan/unittests/StructFieldPopulatedTest.hpp
+gtest/gtest.h
+-
+../src/XmlProcessor.hpp
+/home/kerry/vulkan/src/XmlProcessor.hpp
+
+/home/kerry/vulkan/unittests/StructMapPopulatedTest.cpp
+StructMapPopulatedTest.hpp
+/home/kerry/vulkan/unittests/StructMapPopulatedTest.hpp
+
+/home/kerry/vulkan/unittests/StructMapPopulatedTest.hpp
+gtest/gtest.h
+-
+../src/XmlProcessor.hpp
+/home/kerry/vulkan/src/XmlProcessor.hpp
+
+/home/kerry/vulkan/unittests/XmlParserTest.cpp
+XmlParserTest.hpp
+/home/kerry/vulkan/unittests/XmlParserTest.hpp
+../src/get_string_hash.hpp
+/home/kerry/vulkan/src/get_string_hash.hpp
+
+/home/kerry/vulkan/unittests/XmlParserTest.hpp
 gtest/gtest.h
 -
 ../src/XmlProcessor.hpp

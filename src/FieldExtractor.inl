@@ -5,11 +5,11 @@
 #include "folly/src/portability/Constexpr.h"
 VISITABLE_STRUCT(configuration::Configurator::NullWrapper, dummy);
 
-template <typename T>
-void configuration::FieldExtractor::setFieldForStruct(const std::any& value)
+template <typename StructType>
+void configuration::FieldExtractor::setFieldForStruct(const char* fieldName,const std::any& value)
 {
-   std::size_t structHash=getStringHash(getTypeName(T{}),Configurator::scaleFactor);
-   setFieldValue<T>(structHash, value);
+   std::size_t structHash=getStringHash(fieldName,Configurator::scaleFactor);
+   setFieldValue<StructType>(structHash, value);
 }
 
 template <typename T>
@@ -19,7 +19,7 @@ constexpr void configuration::FieldExtractor::iterateFieldPositions(const boost:
    {
     visit_struct::for_each(T{}, [this] (const char* fieldName, const int idx, auto*) constexpr noexcept -> void
     {
-       fieldPositions[getStringHash(fieldName,scaleFactor)]=(int8_t)idx;
+       fieldPositions[getStringHash(fieldName,Configurator::scaleFactor)]=(int8_t)idx;
     });
    }
 }

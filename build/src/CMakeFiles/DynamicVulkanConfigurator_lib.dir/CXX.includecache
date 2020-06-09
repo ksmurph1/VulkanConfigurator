@@ -45,6 +45,8 @@ get_string_hash.hpp
 /home/kerry/vulkan/src/get_string_hash.hpp
 char_array_limits.hpp
 /home/kerry/vulkan/src/char_array_limits.hpp
+folly/src/portability/Constexpr.h
+/home/kerry/vulkan/src/folly/src/portability/Constexpr.h
 
 /home/kerry/vulkan/src/VulkanConfigurator.cpp
 XmlProcessor.hpp

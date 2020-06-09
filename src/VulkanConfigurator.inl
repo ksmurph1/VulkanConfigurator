@@ -26,12 +26,13 @@ template <std::size_t ... I>
          realTypeName=typeName;
            
       const WrapperVariant& wrapperVariant=typeForHash.get(realTypeName).value_or(WrapperVariant(boost::hana::basic_type<NullWrapper>{}));
-      return std::visit(
+      /*return std::visit(
             [=](auto& arg) -> WrapperVariant 
             {
                return WrapperVariant(std::in_place_type<typename std::decay_t<decltype(arg)>>); 
             },
-            wrapperVariant);
+            wrapperVariant);*/
+      return wrapperVariant;
    }
 
 template <std::size_t ... I>
@@ -43,10 +44,11 @@ template <std::size_t ... I>
          realTypeName=typeName.data();
 
       const WrapperVariant& wrapperVariant=typeForHash.get(realTypeName).value_or(WrapperVariant(boost::hana::basic_type<NullWrapper>{}));
-      return std::visit(
+      /*return std::visit(
             [=](auto& arg) -> WrapperVariant 
             {
                return WrapperVariant(std::in_place_type<typename std::decay_t<decltype(arg)>>); 
             },
-            wrapperVariant);
+            wrapperVariant);*/
+      return wrapperVariant;
    }
