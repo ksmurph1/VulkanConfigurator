@@ -1,0 +1,29 @@
+//AUTO-GENERATED File, caution before modifying
+
+#ifndef VULKANTYPELIST_HPP
+ #define VULKANTYPELIST_HPP
+
+#include "boost_mpl_vector_range_ext/vector90.hpp"
+
+#include "enumeration_wrapper.hpp"
+
+namespace configuration
+{
+
+typedef boost::mpl::vector82<
+char *,void *,const char *,enumeration<VkStructureType>,VkMemoryAllocateInfo,VkMappedMemoryRange,
+enumeration<VkCommandBufferLevel>,VkCommandBufferAllocateInfo,VkCommandBufferBeginInfo,VkCommandBufferInheritanceInfo,VkCommandPoolCreateFlags,VkCommandPoolCreateInfo,
+VkRenderPassBeginInfo,uint32_t,const VkAttachmentDescription *,const VkSubpassDescription *,const VkSubpassDependency *,VkRenderPassCreateInfo,
+enumeration<VkPipelineBindPoint>,const VkAttachmentReference *,const uint32_t *,VkSubpassDescription,VkPipelineStageFlags,VkAccessFlags,
+VkDependencyFlags,VkSubpassDependency,VkImageMemoryBarrier,VkBufferMemoryBarrier,enumeration<VkImageViewType>,VkMemoryBarrier,
+enumeration<VkSampleCountFlagBits>,enumeration<VkImageTiling>,VkImageUsageFlags,VkImageViewCreateFlags,VkImageCreateInfo,VkSamplerCreateInfo,
+VkImageSubresourceRange,VkImageViewCreateInfo,VkViewport,VkRect2D,VkDescriptorImageInfo,VkImageAspectFlags,
+VkSubmitInfo,VkFramebufferCreateInfo,VkBufferCreateInfo,VkFenceCreateFlags,VkFenceCreateInfo,VkEventCreateInfo,
+VkDescriptorPoolCreateInfo,VkDescriptorPoolSize,VkDescriptorSetLayoutBinding,VkDescriptorSetLayoutCreateInfo,VkDescriptorSetAllocateInfo,VkWriteDescriptorSet,
+VkPipelineLayoutCreateInfo,VkPipelineVertexInputStateCreateInfo,VkPipelineInputAssemblyStateCreateInfo,VkPipelineRasterizationStateCreateFlags,VkBool32,VkPipelineRasterizationStateCreateInfo,
+VkPipelineColorBlendAttachmentState,VkPipelineColorBlendStateCreateInfo,enumeration<VkCompareOp>,VkPipelineDepthStencilStateCreateInfo,VkPipelineViewportStateCreateFlags,VkPipelineViewportStateCreateInfo,
+VkPipelineCacheCreateInfo,VkVertexInputBindingDescription,VkVertexInputAttributeDescription,VkApplicationInfo,VkInstanceCreateInfo,VkXcbSurfaceCreateInfoKHR,
+enumeration<VkImageUsageFlagBits>,enumeration<VkSharingMode>,VkSwapchainCreateInfoKHR,enumeration<VkComponentSwizzle>,VkComponentMapping,enumeration<VkAttachmentLoadOp>,
+enumeration<VkAttachmentStoreOp>,enumeration<VkImageLayout>,VkAttachmentDescription,VkAttachmentReference> TYPELIST;
+}
+#endif

@@ -1,0 +1,20 @@
+<struct type="VkImageCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO" type="VkStructureType"/>
+         <field name="pNext" value="nullptr" type="const void *"/>
+         <field name="viewType" value="VK_IMAGE_VIEW_TYPE_2D" type="VkImageViewType"/>
+         <field name="samples" value="VK_SAMPLE_COUNT_1_BIT" type="VkSampleCountFlagBits"/>
+         <field name="tiling" value="VK_IMAGE_TILING_OPTIMAL" type="VkImageTiling"/>
+         <field name="usage" value="VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT | VK_IMAGE_USAGE_TRANSFER_SRC_BIT"
+         type="VkImageUsageFlags"/>
+</struct>
+
+ <struct type="VkSubpassDependency">
+         <field name="srcSubpass" value="4294967295" type="uint32_t"/>
+         <field name="dstSubpass" value="0" type="uint32_t"/>
+         <field name="srcStageMask" value="VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT" type="VkPipelineStageFlags"/>
+         <field name="dstStageMask" value="VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT" type="VkPipelineStageFlags"/>
+         <field name="srcAccessMask" value="VK_ACCESS_MEMORY_READ_BIT" type="VkAccessFlags"/>
+         <field name="dstAccessMask" value="VK_ACCESS_COLOR_ATTACHMENT_READ_BIT &amp; VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT"
+         type="VkAccessFlags"/>
+         <field name="dependencyFlags" value="VK_DEPENDENCY_BY_REGION_BIT" type="VkDependencyFlags"/>
+</struct>

@@ -1,27 +1,16 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "CXX"
-  )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/kerry/vulkan/src/folly/src/FileUtil.cpp" "/home/kerry/vulkan/build/src/folly/CMakeFiles/folly.dir/src/FileUtil.cpp.o"
-  "/home/kerry/vulkan/src/folly/src/Format.cpp" "/home/kerry/vulkan/build/src/folly/CMakeFiles/folly.dir/src/Format.cpp.o"
-  "/home/kerry/vulkan/src/folly/src/ScopeGuard.cpp" "/home/kerry/vulkan/build/src/folly/CMakeFiles/folly.dir/src/ScopeGuard.cpp.o"
-  )
-set(CMAKE_CXX_COMPILER_ID "GNU")
-
-# Preprocessor definitions for this target.
-set(CMAKE_TARGET_DEFINITIONS_CXX
-  "FOLLY_XLOG_STRIP_PREFIXES=\"/home/kerry/vulkan/src/folly:/home/kerry/vulkan/build/src/folly\""
-  "_GNU_SOURCE"
-  "_REENTRANT"
   )
 
-# The include file search paths:
-set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../src"
-  "../src/folly"
-  "src/folly"
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/kerry/vulkan/src/folly/src/FileUtil.cpp" "src/folly/CMakeFiles/folly.dir/src/FileUtil.cpp.o" "gcc" "src/folly/CMakeFiles/folly.dir/src/FileUtil.cpp.o.d"
+  "/home/kerry/vulkan/src/folly/src/Format.cpp" "src/folly/CMakeFiles/folly.dir/src/Format.cpp.o" "gcc" "src/folly/CMakeFiles/folly.dir/src/Format.cpp.o.d"
+  "/home/kerry/vulkan/src/folly/src/ScopeGuard.cpp" "src/folly/CMakeFiles/folly.dir/src/ScopeGuard.cpp.o" "gcc" "src/folly/CMakeFiles/folly.dir/src/ScopeGuard.cpp.o.d"
   )
 
 # Targets to which this target links.

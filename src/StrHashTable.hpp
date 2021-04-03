@@ -2,8 +2,8 @@
 #include <array>
 #include <optional>
 #include "get_string_hash.hpp"
-#include "char_array_limits.hpp"
-#include "folly/src/portability/Constexpr.h"
+#define TAB '\t'
+#define SPACE ' '
 namespace configuration
 {
     class Configurator;
@@ -16,22 +16,13 @@ class StrHashTable
     
     constexpr inline static float scaleFactor=(float)size/
                                  std::numeric_limits<stringhash_uint32::value_type>::max();
+    constexpr inline static uint8_t MAX_CHAR_SIZE=std::numeric_limits<uint8_t>::max();
     struct Bucket
     {
         friend class StrHashTable<size,T>;
         private:
         char key[MAX_CHAR_SIZE];
         T value;
-        /*constexpr void copy(const char*&& array) noexcept
-        {
-            // copy string into array
-            std::decay_t<decltype(MAX_CHAR_SIZE)> i=0;
-            for (; *(array +i) != '\0' && i < MAX_CHAR_SIZE; i++)
-            {
-               this->key[i]=*(array+i);
-            }
-            this->key[i]='\0';
-        }*/
         constexpr void copy(const char*array) noexcept
         {
             // copy string into array
@@ -58,13 +49,13 @@ class StrHashTable
         std::decay_t<decltype(CHAINSIZE)> count=0;
         Bucket(const Bucket&)=delete;
        
-         template <typename=typename std::enable_if_t<std::is_nothrow_move_assignable_v<T>>>
+        template <typename=typename std::enable_if_t<std::is_nothrow_move_assignable_v<T>>>
         Bucket& operator=(const Bucket& rhs)
         {
            return operator=(std::move(rhs));
         }
 
-         template <typename=typename std::enable_if_t<std::is_nothrow_move_assignable_v<T>>>
+        template <typename=typename std::enable_if_t<std::is_nothrow_move_assignable_v<T>>>
         Bucket(Bucket&& bucket)
         {
            value=std::move(bucket.value);
@@ -78,62 +69,102 @@ class StrHashTable
             return *this;
         }
     };
-    char temp[MAX_CHAR_SIZE];
     std::array<Bucket,CHAINSIZE> buckets[size];
+    bool marked[size];
+    decltype(size) bucketCount;
 
-    constexpr StrHashTable() :buckets{} {}
-    constexpr const char * remSpaces(const char* val) noexcept
+    template <std::size_t N>
+    constexpr void remSpaces(const char* val, char (&res)[N]) const noexcept
     {
-       decltype(size) len=folly::constexpr_strlen(val);
-       decltype(size) decr=0;
-       for (decltype(size) i=0;i < len  && i < MAX_CHAR_SIZE;i++) 
+       decltype(size) i=0;
+       decltype(size) j=0;
+       while (*(val+i)) 
        {
-          if (*(val+i) != ' ')  //don't copy spaces
-             *(temp+i-decr)=*(val+i);
-          else if (decr < i)
-             decr++;
+          if (*(val+i) != SPACE && *(val+i) != TAB)  //don't copy spaces
+          {
+             *(res+j)=*(val+i);
+             j++;i++;
+          }
+          else
+             i++;
        }
-       temp[len-decr]='\0';
-       return temp;
-    } 
+       res[j]='\0';
+    }
    public:
-    constexpr StrHashTable(const StrHashTable& src) noexcept : buckets() 
+    constexpr StrHashTable() :buckets{},bucketCount(0),marked{} {}
+
+    constexpr StrHashTable(const StrHashTable& src) noexcept : buckets(),bucketCount(src.bucketCount),
+                                                               marked{} 
     {
        for (decltype(size) i=0; i < size; i++)
        {
           buckets[i]=src.buckets[i];
+          marked[i]=src.marked[i];
        }
     } 
 
     template <std::size_t N,typename=typename std::enable_if_t<N<=size>>
     constexpr static StrHashTable setup(const char*(&strs)[N], const T (&values)[N])
     {
-    StrHashTable base;
-    bool marked[size]={false};
-    
-    for (decltype(size) i=0; i < N; i++)
-    {
-        const char*str=base.remSpaces(strs[i]);
-        decltype(size) hash=getStringHash(str,scaleFactor);
-        std::decay_t<std::remove_extent_t<decltype(buckets)>>& chain= base.buckets[hash];
-        if (marked[hash])
-        {  
-            chain[chain[0].count+1]=Bucket(str,std::move(values[i]));
-            chain[0].count+=1;
-        }
-        else
-        {
-            marked[hash]=true;
-            chain[0]=Bucket(str,std::move(values[i]));
-        }
+       StrHashTable base;
+       char result[MAX_CHAR_SIZE];
+       for (decltype(size) i=0; i < N; i++)
+       {
+           base.remSpaces(strs[i],result);
+           decltype(size) hash=getStringHash(std::string_view(result),scaleFactor);
+           std::decay_t<std::remove_extent_t<decltype(buckets)>>& chain= base.buckets[hash];
+           if (base.marked[hash])
+           {     
+               chain[chain[0].count+1]=Bucket(result,values[i]);
+               chain[0].count+=1;
+           }
+           else
+           {
+               base.marked[hash]=true;
+               chain[0]=Bucket(result, values[i]);
+           }
+           base.bucketCount++;
+       }
+       return base;
     }
-    return base;
+    template <std::size_t N>
+    constexpr void add(const char (&key)[N], const T& value) noexcept
+    {
+       if (++bucketCount < size)
+       {
+          char charKey[MAX_CHAR_SIZE];
+          remSpaces(key, charKey);
+          decltype(size) hash=getStringHash(std::string_view(charKey),scaleFactor);
+          std::decay_t<std::remove_extent_t<decltype(buckets)>>& chain= buckets[hash];
+          if (marked[hash])
+          {
+             chain[chain[0].count+1]=Bucket(charKey,value);
+             chain[0].count+=1;
+          }
+          else
+          {
+             marked[hash]=true;
+             chain[0]=Bucket(charKey,value);
+          }
+       }
+    }
+    
+    constexpr bool isValidState() const noexcept
+    {
+        return bucketCount < size;
     }
 
-    constexpr std::optional<T> get(const char* key) noexcept
+    template <std::size_t N>
+    constexpr std::optional<T> get(const char (&key) [N]) const noexcept
     {
-        const char* newKey=remSpaces(key);
-        decltype(getStringHash(0,0.0)) hash=getStringHash(newKey,scaleFactor);
+        return get((const char*)key);
+    }
+    
+    constexpr std::optional<T> get(const char* key) const noexcept
+    {
+        char newKey[MAX_CHAR_SIZE];
+        remSpaces(key, newKey);
+        decltype(getStringHash(0,0.0)) hash=getStringHash(std::string_view(newKey),scaleFactor);
         if (hash < size)
         {
             // find bucket based on hash

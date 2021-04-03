@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VULKANCONFIGURATOR_HPP
+#define VULKANCONFIGURATOR_HPP
 #include <boost/hana/type.hpp>
 #include "ctti_type_index.hpp"
 #include "vulkan/vulkan.h"
@@ -15,7 +16,7 @@
 #include <boost/mpl/set/set0.hpp>
 #include <boost/mpl/copy.hpp>
 #include <boost/mpl/back_inserter.hpp>
-#include "vulkan_type_list.hpp"
+#include "VulkanTypeList.hpp"
 #include <tinyxml2.h>
 #include "compile_time_string_hash.hpp"
 #include <limits>
@@ -24,9 +25,8 @@
 #include <any>
 #include <type_traits>
 #include "ArenaContainers.hpp"
-#include "string_hash.hpp"
+//#include "string_hash.hpp"
 #include "StrHashTable.hpp"
-#include "char_array_limits.hpp"
 #include "folly/src/portability/Constexpr.h"
 #include "constexpr_strcpy.hpp"
 //auto typeFor=boost::hana::make_map();
@@ -35,15 +35,8 @@ namespace configuration
    
 class Configurator
 {
-     
-
-       aa::Alloc<char> stringAlloc;
-constexpr inline static uint16_t typeMapBucketCount=std::numeric_limits<uint8_t>::max();
-constexpr inline static float scaleFactor=(float)typeMapBucketCount/
-                                 std::numeric_limits<stringhash_uint32::value_type>::max();
-      
-
-
+constexpr inline static uint8_t typeMapBucketCount=std::numeric_limits<uint8_t>::max(); 
+constexpr inline static uint8_t MAX_CHAR_SIZE=std::numeric_limits<uint8_t>::max();
 //insert additional types
 //typedef boost::mpl::copy<TYPELIST,boost::mpl::back_inserter<additionalTypes>>::type typeBag;
 
@@ -70,25 +63,11 @@ typedef boost::mpl::remove_if<uniqueTypes, std::is_enum<boost::mpl::_1>>::type t
     /*using map_t=decltype(boost::hana::make_map(boost::hana::make_pair(boost::hana::size_c<stringview_hash(stringhash_uint32(
        boost::typeindex::ctti_type_index::type_id_with_cvr<void *>().pretty_name()))>,boost::hana::type_c<void *>)));*/
 public:
-   template <typename T>
-   using  UnderlyingType=typename std::decay_t<T>::type;
+   constexpr inline static float scaleFactor=(float)typeMapBucketCount/
+                                 std::numeric_limits<stringhash_uint32::value_type>::max();
 
-   template <typename T>
-   using WrapperType=boost::hana::basic_type<T>;
 
-/*struct MapBuilder
-{
-   typedef aa::unordered_map<aa::string,std::any> MapType;
-   private:
-   typename MapType::allocator_type allocator;
-   public:
-      MapBuilder();// : allocator(MapType::allocator_type::inner_allocator_type(aa::ARENA)) {}
-      MapBuilder(const MapBuilder&)=delete;
-      MapType getExtractor() const
-      {
-                return MapType(boost::mpl::size<types>::value,allocator); 
-      }
-};*/
+
 
 struct NullWrapper
    {
@@ -96,6 +75,15 @@ struct NullWrapper
       char dummy; // for visit_struct so no error is generated, must have at least one field
    };
 private:
+static inline StrHashTable<MAX_CHAR_SIZE,uint64_t> enumMap;
+struct EnumMapInitializer
+{
+   constexpr EnumMapInitializer() noexcept;
+   private:
+      char key[1][MAX_CHAR_SIZE]={'\0'};
+};
+static EnumMapInitializer enumMapInit;
+
 template <typename Iter, typename Seq>
 struct MakeFromTypesAtIndices;
 
@@ -135,96 +123,47 @@ struct TypesFor;
 template <std::size_t ... I>
 struct TypesFor<std::index_sequence<I...>>
 {
-
-   //typedef WrapperTypes (&TypeMap) [NumElements<std::make_index_sequence <typeMapBucketCount>>::value];
    private:
+      char storage[MAX_CHAR_SIZE];
+      std::remove_const_t<decltype(MAX_CHAR_SIZE)> storagePos=0;
+      char names[sizeof...(I)][MAX_CHAR_SIZE];
+      WrapperVariant values[sizeof...(I)];
+      const char*typeNames[sizeof...(I)];
       
-      static char names[sizeof...(I)][MAX_CHAR_SIZE];
-      constexpr static WrapperVariant values[sizeof...(I)]={std::variant_alternative_t<I,WrapperVariant>{}...};
-      static const char*typeNames[sizeof...(I)];
-      
-      static StrHashTable<typeMapBucketCount,WrapperVariant> typeForHash;
-      char aliases[typeMapBucketCount][MAX_CHAR_SIZE]={};
+      StrHashTable<MAX_CHAR_SIZE,WrapperVariant> typeForHash;
+      StrHashTable<MAX_CHAR_SIZE,const char*> aliases;
+      constexpr void setupAliases() noexcept;
       
 public:
-      constexpr TypesFor<std::index_sequence<I...>>() noexcept 
-      {}
-   /*constexpr TypeMap getHanaTypeForHashMap()
-   {
-       return typeForHash;
-   }*/
-   /*template <std::size_t N>
-   constexpr auto getType(const char (&typeName)[N]) const noexcept
-   {
-      return typename std::variant_alternative_t<typeForHash[getStringHash(typeName,scaleFactor)
-      ].index(),WrapperVariant>::type{};
-   }*/
+   constexpr TypesFor<std::index_sequence<I...>>() noexcept; 
+   
    constexpr WrapperVariant getType(const char* typeName) const noexcept;
    
    constexpr WrapperVariant getType(std::string_view typeName) const noexcept;
    
 
-   constexpr static std::size_t size() noexcept
+   constexpr std::size_t size() const noexcept
    {
-      return decltype(typeForHash)::getSize();
-   }
-   /*template <typename ...Types, std::size_t ... Sizes>
-   constexpr void setAliases(const std::pair<const char (&) [Sizes],
-      boost::hana::basic_type<Types>> ... pairs)
-   {
-        // do group assignment to array hopefully at compile-time for strings to type map
-         ((typeForHash[getStringHash(pairs.first,scaleFactor)]=pairs.second),...);    
-   }*/
-   constexpr TypesFor<std::index_sequence<I...>> setAlias(const char *first, const char * second) noexcept
-   {
-      strcpy(second, aliases[getStringHash(first,scaleFactor)],folly::constexpr_strlen(second));
-      return *this;    
+      return typeForHash.getSize();
    }
    
-   /*template <std::size_t HASH>
-   using  BaseType=typename std::variant_alternative_t<typeForHash[HASH].index(),WrapperTypes>::type;*/
-   /*constexpr static TypeMap value=[] ()
-   {
-      variant thisMap[NumElements<std::make_index_sequence <typeMapBucketCount>>::value]{};
-    ((thisMap[getStringHash(
-       boost::typeindex::ctti_type_index::type_id_with_cvr<typename std::variant_alternative_t<
-       I,variant>::type>().pretty_name())]=std::move(variant(std::in_place_index<I>))),...);
-       //variant(std::in_place_index<I>)),...);
-    return thisMap;
-   }();*/
-//   {variant(std::in_place_index_t<I>())...};
-/*
-   public:
-      constexpr static TypeMap getHanaTypeForHashMap()
-      {
-         TypeMap typeForHash={};
-         // do group assignment to array hopefully at compile-time for strings to type map
-         ((typeForHash[stringview_hash(stringhash_uint32(
-       boost::typeindex::ctti_type_index::type_id_with_cvr<typename std::variant_alternative<I,TypeMap::value_type>::type::type
-       >().pretty_name()))]=type_selector[I]),...);
-
-       return typeForHash;
-      }*/
+   
 };
 protected:
    using HashTypeMap=TypesFor<std::make_index_sequence <std::variant_size_v<WrapperVariant>>>;
-
 private:
-   static HashTypeMap hanaTypeForStrHash;
-   // convert into struct type
-  // static HashTypeMap::TypeMap hanaTypeForStrHash;
+   static HashTypeMap typeMap;
    
    friend class XmlProcessor;
-   friend class StructureTypes;
    friend class FieldExtractor;
+   friend class ChildTypeParentFieldMatching;
+   friend class ParentChildFieldLink;
+   friend class VulkanMap;
 
 public:
 
-   explicit Configurator() : stringAlloc()
-   {}
-   //void parseConfig(const char *const);
+   Configurator() {}
   
 };
 }
-
-//std::puts(boost::typeindex::ctti_type_index::type_id<boost::hana::type<int>>().pretty_name().data());
+#endif

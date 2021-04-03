@@ -95,16 +95,14 @@ CMAKE_BUILD_TYPE:STRING=Debug
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
-//CXX compiler
-CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/g++
+//No help, variable specified on the command line.
+CMAKE_CXX_COMPILER:UNINITIALIZED=g++
 
-//A wrapper around 'ar' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_CXX_COMPILER_AR:FILEPATH=/usr/bin/gcc-ar-9
+//No help, variable specified on the command line.
+CMAKE_CXX_COMPILER_AR:UNINITIALIZED=gcc-ar-10
 
-//A wrapper around 'ranlib' adding the appropriate '--plugin' option
-// for the GCC compiler
-CMAKE_CXX_COMPILER_RANLIB:FILEPATH=/usr/bin/gcc-ranlib-9
+//No help, variable specified on the command line.
+CMAKE_CXX_COMPILER_RANLIB:UNINITIALIZED=gcc-ranlib-10
 
 //Flags used by the CXX compiler during all build types.
 CMAKE_CXX_FLAGS:STRING=
@@ -121,16 +119,16 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
-//C compiler
-CMAKE_C_COMPILER:FILEPATH=/usr/bin/cc
+//No help, variable specified on the command line.
+CMAKE_C_COMPILER:UNINITIALIZED=gcc
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_C_COMPILER_AR:FILEPATH=/usr/bin/gcc-ar-9
+CMAKE_C_COMPILER_AR:FILEPATH=/usr/bin/gcc-ar-10
 
 //A wrapper around 'ranlib' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_C_COMPILER_RANLIB:FILEPATH=/usr/bin/gcc-ranlib-9
+CMAKE_C_COMPILER_RANLIB:FILEPATH=/usr/bin/gcc-ranlib-10
 
 //Flags used by the C compiler during all build types.
 CMAKE_C_FLAGS:STRING=
@@ -166,7 +164,7 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //Enable/Disable output of compile commands during generation.
-CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=OFF
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
 
 //User executables (bin)
 CMAKE_INSTALL_BINDIR:PATH=bin
@@ -225,8 +223,8 @@ CMAKE_INSTALL_SYSCONFDIR:PATH=etc
 //Path to a program.
 CMAKE_LINKER:FILEPATH=/usr/bin/ld
 
-//Path to a program.
-CMAKE_MAKE_PROGRAM:FILEPATH=/usr/bin/make
+//No help, variable specified on the command line.
+CMAKE_MAKE_PROGRAM:UNINITIALIZED=/usr/bin/make
 
 //Flags used by the linker during the creation of modules during
 // all build types.
@@ -351,7 +349,7 @@ FOLLY_LIBRARY_SANITIZE_ADDRESS:BOOL=OFF
 INCLUDE_INSTALL_DIR:STRING=include
 
 //Path to a file.
-JEMALLOC_INCLUDE_DIR:PATH=/usr/include/jemalloc
+JEMALLOC_INCLUDE_DIR:PATH=/usr/include
 
 //Path to a library.
 JEMALLOC_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libjemalloc.so
@@ -361,9 +359,6 @@ LIB_INSTALL_DIR:STRING=lib
 
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
-
-//Path to a file.
-SCB_INCLUDE_DIR:PATH=/usr/include
 
 //Path to a file.
 TINYXML2_INCLUDE_DIR:PATH=/usr/include
@@ -399,13 +394,7 @@ pkgcfg_lib_PC_TINYXML2_tinyxml2:FILEPATH=/usr/lib/x86_64-linux-gnu/libtinyxml2.s
 pkgcfg_lib_PC_VULKAN_vulkan:FILEPATH=/usr/lib/x86_64-linux-gnu/libvulkan.so
 
 //Path to a library.
-pkgcfg_lib_PC_XCB_vulkan:FILEPATH=/usr/lib/x86_64-linux-gnu/libvulkan.so
-
-//Path to a library.
 pkgcfg_lib_PC_XCB_xcb:FILEPATH=/usr/lib/x86_64-linux-gnu/libxcb.so
-
-//The directory containing a CMake configuration file for tinyxml2.
-tinyxml2_DIR:PATH=tinyxml2_DIR-NOTFOUND
 
 
 ########################
@@ -463,7 +452,7 @@ CMAKE_CACHEFILE_DIR:INTERNAL=/home/kerry/vulkan/build
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=17
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=20
 //Patch version of cmake used to create the current loaded cache
 CMAKE_CACHE_PATCH_VERSION:INTERNAL=0
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
@@ -577,8 +566,6 @@ CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 CMAKE_INSTALL_SYSCONFDIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_MAKE_PROGRAM
-CMAKE_MAKE_PROGRAM-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS
 CMAKE_MODULE_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS_DEBUG
@@ -604,7 +591,7 @@ CMAKE_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_READELF
 CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
-CMAKE_ROOT:INTERNAL=/usr/share/cmake-3.17
+CMAKE_ROOT:INTERNAL=/usr/share/cmake-3.20
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
 CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG
@@ -662,7 +649,7 @@ FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/include][cfound components: fi
 //Details about finding DOUBLE_CONVERSION
 FIND_PACKAGE_MESSAGE_DETAILS_DOUBLE_CONVERSION:INTERNAL=[/usr/lib/x86_64-linux-gnu/libdouble-conversion.so][/usr/include][v()]
 //Details about finding JEMALLOC
-FIND_PACKAGE_MESSAGE_DETAILS_JEMALLOC:INTERNAL=[/usr/lib/x86_64-linux-gnu/libjemalloc.so][/usr/include/jemalloc][v()]
+FIND_PACKAGE_MESSAGE_DETAILS_JEMALLOC:INTERNAL=[/usr/lib/x86_64-linux-gnu/libjemalloc.so][/usr/include][v()]
 //Details about finding PkgConfig
 FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29.1()]
 //Details about finding Threads
@@ -811,14 +798,6 @@ PC_TINYXML2_STATIC_LIBS_L:INTERNAL=
 PC_TINYXML2_STATIC_LIBS_OTHER:INTERNAL=
 PC_TINYXML2_STATIC_LIBS_PATHS:INTERNAL=
 PC_TINYXML2_VERSION:INTERNAL=6.0.0
-PC_TINYXML2_tinyxml2-6.0.0_INCLUDEDIR:INTERNAL=
-PC_TINYXML2_tinyxml2-6.0.0_LIBDIR:INTERNAL=
-PC_TINYXML2_tinyxml2-6.0.0_PREFIX:INTERNAL=
-PC_TINYXML2_tinyxml2-6.0.0_VERSION:INTERNAL=
-PC_TINYXML2_tinyxml2-6.0_INCLUDEDIR:INTERNAL=
-PC_TINYXML2_tinyxml2-6.0_LIBDIR:INTERNAL=
-PC_TINYXML2_tinyxml2-6.0_PREFIX:INTERNAL=
-PC_TINYXML2_tinyxml2-6.0_VERSION:INTERNAL=
 PC_TINYXML2_tinyxml2_INCLUDEDIR:INTERNAL=
 PC_TINYXML2_tinyxml2_LIBDIR:INTERNAL=
 PC_TINYXML2_tinyxml2_PREFIX:INTERNAL=
@@ -889,10 +868,6 @@ PC_XCB_STATIC_LIBS_L:INTERNAL=
 PC_XCB_STATIC_LIBS_OTHER:INTERNAL=
 PC_XCB_STATIC_LIBS_PATHS:INTERNAL=
 PC_XCB_VERSION:INTERNAL=1.13
-PC_XCB_vulkan_INCLUDEDIR:INTERNAL=
-PC_XCB_vulkan_LIBDIR:INTERNAL=
-PC_XCB_vulkan_PREFIX:INTERNAL=
-PC_XCB_vulkan_VERSION:INTERNAL=
 PC_XCB_xcb_INCLUDEDIR:INTERNAL=
 PC_XCB_xcb_LIBDIR:INTERNAL=
 PC_XCB_xcb_PREFIX:INTERNAL=
@@ -938,8 +913,6 @@ __pkg_config_checked_PC_XCB:INTERNAL=1
 pkgcfg_lib_PC_TINYXML2_tinyxml2-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_PC_VULKAN_vulkan
 pkgcfg_lib_PC_VULKAN_vulkan-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_PC_XCB_vulkan
-pkgcfg_lib_PC_XCB_vulkan-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_PC_XCB_xcb
 pkgcfg_lib_PC_XCB_xcb-ADVANCED:INTERNAL=1
 prefix_result:INTERNAL=/usr/lib/x86_64-linux-gnu

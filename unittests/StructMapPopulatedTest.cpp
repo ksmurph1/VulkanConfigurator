@@ -2,12 +2,11 @@
 
 TEST_F(MapPopulatedFixture, TypeMapPopulated)
 {
-   configuration::XmlProcessor processor;
-   bool result=processor.process(filename1);
+   bool result=process(filename);
 
    if (result)
    {
-      auto map=processor.getStructsMap();
+      auto map=getStructs();
       ASSERT_TRUE(map.find("VkFramebufferCreateInfo")!=map.end());
       ASSERT_TRUE(map.find("VkBufferCreateInfo")!=map.end());
       ASSERT_TRUE(map.find("VkFenceCreateInfo")!=map.end());

@@ -9,10 +9,11 @@ class StringHashFixture : public ::testing::Test
    std::mt19937 gen;   //Standard mersenne_twister_engine seeded with rd()
    std::uniform_real_distribution<float> dis;
  protected:
-   constexpr inline static uint8_t limit=std::numeric_limits<u_int8_t>::max()*4;
+   constexpr inline static uint8_t limit=std::numeric_limits<u_int8_t>::max();
    constexpr inline static float scaleFactor=1.0f/  // scale result down so fits in array
                                                 // like container-make sure we have twice space
                (std::numeric_limits<stringhash_uint32::value_type>::max()/limit);
+               
   static aatest::string largeString;
   static aatest::StringAlloc allocator;
   

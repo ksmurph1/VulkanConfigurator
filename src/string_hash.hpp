@@ -2,8 +2,10 @@
 #define string_hash_hpp
 #include "ArenaContainers.hpp"
 #include "compile_time_string_hash.hpp"
-namespace std
+namespace configuration
 {
+    template <typename T>
+    struct hash;
 
 	template<> struct hash<aa::string>
     {
@@ -12,6 +14,5 @@ namespace std
             return stringview_hash(stringhash_uint32(s.data()));
         }
     };
-    
 }
 #endif

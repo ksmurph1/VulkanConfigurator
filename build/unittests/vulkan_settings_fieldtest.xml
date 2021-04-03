@@ -4,8 +4,8 @@
 </struct>
 <struct type="VkSwapchainCreateInfoKHR">
    <field name="pNext" value="nullptr" type="const void *"/>
-   <field name="imageArrayLayers" value="1" type="int32_t"/>
-   <field name="pQueueFamilyIndices" value="1" type="const uint32_t *"/>
+   <field name="imageArrayLayers" value="1" type="uint32_t"/>
+   <field name="pQueueFamilyIndices" value="nullptr" type="const uint32_t *"/>
 </struct>
 <struct type="VkPipelineRasterizationStateCreateInfo">
    <field name="lineWidth" value="1.0" type="float"/>

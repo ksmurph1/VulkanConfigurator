@@ -37,7 +37,7 @@
          <field name="subpassCount" value="1" type="uint32_t"/>
          <field name="pSubpasses" value="&amp;id:1" type="const VkSubpassDescription *"/>
          <field name="dependencyCount" value="2" type="uint32_t"/>
-         <field name="pDependencies" value="&amp1;id:1,&amp1;id:2" type="const VkSubpassDependency *"/>
+         <field name="pDependencies" value="&amp;id:1,&amp;id:2" type="const VkSubpassDependency *"/>
       </struct>
       <struct type="VkSubpassDescription" id="1">
          <field name="pipelineBindPoint" value="VK_PIPELINE_BIND_POINT_GRAPHICS" type="VkPipelineBindPoint"/>
@@ -106,7 +106,7 @@
       </struct>
       <struct type="VkImageViewCreateInfo">
          <field name="sType" value="VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO" type="VkStructureType"/>
-         <field name="subresourceRange" value="id:1" type="VkImageSubresourceRange"/>
+         <field name="subresourceRange" value="&amp;id:1" type="VkImageSubresourceRange"/>
       </struct>
       <struct type="VkViewport"/>
       <struct type="VkRect2D"/>
@@ -220,7 +220,7 @@
       <struct type="VkSwapchainCreateInfoKHR">
          <field name="sType" value="VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR" type="VkStructureType"/>
          <field name="pNext" value="nullptr" type="const void *"/>
-         <field name="imageArrayLayers" value="1" type="int32_t"/>
+         <field name="imageArrayLayers" value="1" type="uint32_t"/>
          <field name="imageUsage" value="VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT" type="VkImageUsageFlagBits"/>
          <field name="imageSharingMode" value="VK_SHARING_MODE_EXCLUSIVE" type="VkSharingMode"/>
          <field name="queueFamilyIndexCount" value="0" type="uint32_t"/>

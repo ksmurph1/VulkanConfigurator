@@ -2,11 +2,11 @@
 #include <gtest/gtest.h>
 #include "../src/XmlProcessor.hpp"
 
-class MapPopulatedFixture : public ::testing::Test
+class MapPopulatedFixture : public ::testing::Test, protected configuration::XmlProcessor
 {
  protected:
    
-  constexpr inline static const char * filename1="vulkan_settings_maptest.xml";
+  constexpr inline static const char * filename="vulkan_settings_maptest.xml";
 
   // Per-test-suite set-up.
   // Called before the first test in this test suite.

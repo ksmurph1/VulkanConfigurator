@@ -18,9 +18,9 @@ TEST_F(XmlProcFixture, AttribMapPopulated)
          auto [map, size]=getAttribMap();
        
          ASSERT_FALSE(size == 0);
-         ASSERT_EQ(map[configuration::getStringHash("type",scaleFactor)].compare("VkImageViewCreateFlags"),0);
-         ASSERT_EQ(map[configuration::getStringHash("value",scaleFactor)].compare("0"),0);
-         ASSERT_EQ(map[configuration::getStringHash("name",scaleFactor)].compare("flags"),0);
+         ASSERT_STREQ(map[configuration::getStringHash("type",scaleFactor)].data(),"VkImageViewCreateFlags");
+         ASSERT_STREQ(map[configuration::getStringHash("value",scaleFactor)].data(),"0");
+         ASSERT_STREQ(map[configuration::getStringHash("name",scaleFactor)].data(),"flags");
    }
    else
       FAIL();    
@@ -29,6 +29,5 @@ TEST_F(XmlProcFixture, AttribMapPopulated)
 TEST_F(XmlProcFixture, ErrorCondition)
 {
    bool result=parseConfig(filename2);
-   ASSERT_TRUE(!result);
-   ASSERT_EQ(getErrorState(), ProcessError::FILE_LOAD_ERR);
+   ASSERT_TRUE(!result && isError(configuration::ErrorState::ProcessError::FILE_LOAD_ERR));
 }

@@ -1,0 +1,10 @@
+ <struct type="VkSubpassDependency">
+         <field name="srcSubpass" value="4294967295" type="uint32_t"/>
+         <field name="dstSubpass" value="0" type="uint32_t"/>
+         <field name="srcStageMask" value="VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT" type="VkPipelineStageFlags"/>
+         <field name="dstStageMask" value="VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT" type="VkPipelineStageFlags"/>
+         <field name="srcAccessMask" value="VK_ACCESS_MEMORY_READ_BIT" type="VkAccessFlags"/>
+         <field name="dstAccessMask" value="VK_ACCESS_COLOR_ATTACHMENT_READ_BIT &amp; VK_ACCESS_COLOR_ATTACHMENT_WRITE_BIT"
+         type="VkAccessFlags"/>
+         <field name="dependencyFlags" value="VK_DEPENDENCY_BY_REGION_BIT" type="VkDependencyFlags"/>
+</struct>

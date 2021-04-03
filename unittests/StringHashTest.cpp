@@ -13,19 +13,19 @@ TEST_F(StringHashFixture, HashInRange)
 
 TEST_F(StringHashFixture, HashNoConflicts)
 {
-    constexpr uint8_t length=std::numeric_limits<uint8_t>::max();
-
-    decltype(configuration::getStringHash(0,0.0)) hashes[length]={0};
-    std::generate_n(hashes,length,[this] ()-> decltype(configuration::getStringHash(0,0.0))
+    using hashType=decltype(configuration::getStringHash(nullptr,0.0));
+    constexpr uint8_t length=std::numeric_limits<u_int8_t>::max();
+    hashType hashes[length]={0};
+    std::generate_n(hashes,length,[this] ()-> hashType
     {                                                                                                                                                                               
         return configuration::getStringHash(aatest::string(getRandomChar(),getRandomChar(),aatest::StringAlloc()),
         scaleFactor);
     });
-    decltype(configuration::getStringHash(0,0.0)) * hashesEnd=hashes+length;
+    hashType * hashesEnd=hashes+length;
    
     std::sort(hashes,hashesEnd);
-    decltype(configuration::getStringHash(0,0.0)) duplicates[length];
-    constexpr decltype(configuration::getStringHash(0,0.0)) sentinal=(decltype(configuration::getStringHash(0,0.0)))-1;
+    hashType duplicates[length];
+    constexpr hashType sentinal=(hashType)-1;
     std::inclusive_scan(hashes,hashesEnd,duplicates,[sentinal](const auto& a, const auto& b)
     {
         if (a == b)
@@ -39,5 +39,5 @@ TEST_F(StringHashFixture, HashNoConflicts)
         
     });
     // allow at least one conflict in hash to pass in this diverse pool
-    ASSERT_LT(std::count_if(duplicates, duplicates+length,[](const auto& val) {return val != sentinal;}),2);
+    ASSERT_LT(std::count_if(duplicates, duplicates+length,[](const auto& val) {return val != sentinal;}),3);
 }

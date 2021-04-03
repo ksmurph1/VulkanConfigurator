@@ -2,6 +2,8 @@
 #include "../src/ctti_type_index.hpp"
 #include "../src/get_string_hash.hpp"
 #include "../src/constexpr_strcpy.hpp"
+#include "../src/folly/src/portability/Constexpr.h"
+#include "../src/get_string_hash.hpp"
 #include <numeric>
 
 TEST_F(TypeHashFixture, CheckTypeHashConflicts)
@@ -12,9 +14,9 @@ TEST_F(TypeHashFixture, CheckTypeHashConflicts)
        using underlyingType=typename std::variant_alternative_t<index,WrapperVariant>::type;
       
        const char* name=boost::typeindex::ctti_type_index::type_id_with_cvr<underlyingType>().pretty_name();
-       char dst[strlen(name)+1];
-
-       ASSERT_EQ(typeMap.getType(configuration::strcpyEnum(name,dst,strlen(name)+1)).index(), index);
+       char dst[folly::constexpr_strlen(name)+1];
+       WrapperVariant v=typeMap.getType(configuration::strcpyEnum(name,dst,folly::constexpr_strlen(name)+1));
+       ASSERT_EQ(v.index(), index);
     });
 }
 

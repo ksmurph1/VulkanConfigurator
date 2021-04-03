@@ -220,11 +220,11 @@ configure_file(
   ${CMAKE_CURRENT_BINARY_DIR}/libfolly.pc.gen
   @ONLY
 )
-file(
-  GENERATE
-  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libfolly.pc
-  INPUT ${CMAKE_CURRENT_BINARY_DIR}/libfolly.pc.gen
-)
+#file(
+#  GENERATE
+#  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libfolly.pc
+#  INPUT ${CMAKE_CURRENT_BINARY_DIR}/libfolly.pc.gen
+#)
 install(
   FILES ${CMAKE_CURRENT_BINARY_DIR}/libfolly.pc
   DESTINATION ${LIB_INSTALL_DIR}/pkgconfig

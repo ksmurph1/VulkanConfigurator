@@ -17,7 +17,6 @@ if (sys.argv[startIdx].strip("'").startswith('-')): # flags
 # Find out the xml generator (gccxml or castxml)
 generator_path, generator_name = utils.find_xml_generator()
 metaFilename="vulkan_structs_meta.hpp"
-typeListFilename="vulkan_type_list.hpp"
 if (generator_name != 'castxml'):
    print (generator_name+' does not equal castxml.  Please make sure castxml is installed.')
    sys.exit(1)
@@ -58,32 +57,6 @@ else:
 finally:
    f.close()
 # commented out for now- too many types- over 450
-'''f = open(typeListFilename, 'w')
-# generate vulkan type list code
-try:
-   print ("//AUTO-GENERATED File, caution before modifying\n",file=f)
-   print ("#ifndef "+typeListFilename.replace(".","_")+"\n #define "+
-   typeListFilename.replace(".","_") + "\n",file=f)
-
-   count=len(seenStruct)
-   roundup=int(math.ceil(count / 10.0)) * 10
-   print ("#include \"boost_mpl_vector_range_ext/vector{}.hpp\"\n".format(roundup), file=f)
-   print ("namespace configuration\n{\n",file=f)
-
-   print ("typedef boost::mpl::vector{}<".format(count),file=f)
-   typeNames=''
-   for typeName in seenStruct.keys():
-      typeNames+=typeName+",\n"
-   # remove last comma and newline
-   typeNames+= typeNames.rstrip(',\n')+"> TYPELIST;\n"
-   print (typeNames, file=f)
-except Exception as ex:
-   print("exception: {0}".format(ex))
-   raise
-else:
-   print ("}\n#endif\n", file=f)
-finally:
-   f.close()'''
    
 if __name__ == '_main_':
    startIdx=2

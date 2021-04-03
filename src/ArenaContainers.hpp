@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ARENACONTAINERS_HPP
+#define ARENACONTAINERS_HPP
 #include <unordered_map>
 #include <scoped_allocator>
 #define USE_JEMALLOC
@@ -24,7 +25,7 @@ namespace aa
           using Inner = decltype(allocator);
       public:
          using value_type = T;
-
+         typedef std::size_t    size_type;        // An unsigned integral type that can represent the size of the largest object to be allocated. 
          using propagate_on_container_copy_assignment = std::true_type;
          using propagate_on_container_move_assignment = std::true_type;
          using propagate_on_container_swap = std::true_type;
@@ -34,14 +35,15 @@ namespace aa
         template <typename U>
         explicit CxxAllocatorAdaptorArena(CxxAllocatorAdaptorArena<U> const& other)
             : allocator(other.allocator){}
-        T* allocate(std::size_t n)
+        T* allocate(size_type n)
         {
-           return allocator.allocate(n);
+              return allocator.allocate(n);
         }
-        void deallocate(T* p, std::size_t n) 
+        void deallocate(T* p, size_type n) 
         {
-           allocator.deallocate(p, n);
+              allocator.deallocate(p, n);
         }
+      
         const folly::SysArena& inner_allocator()
         {
         return allocator.inner_allocator();
@@ -55,6 +57,39 @@ namespace aa
             return a.allocator != b.allocator;
         }
     };
+    class ArenaPoolAlloc
+    {
+       static CxxAllocatorAdaptorArena<char> arenaAlloc;
+       public:
+       typedef std::size_t    size_type;
+       private:
+       static inline std::array<std::pair<char*,size_type>,
+                     std::numeric_limits<uint8_t>::max()> ptrStore;
+       static inline size_type index=0;
+       static inline size_type nextAvailPos=index+1; 
+       public:
+       // types
+       typedef std::ptrdiff_t difference_type;  // A signed integral type that can represent the difference of any two pointers. 
+
+       // public static functions for pool allocators
+       static char * malloc(const size_type n)
+       {
+          ptrStore[index]=std::make_pair(arenaAlloc.allocate(n),n);
+          const size_type curPos=index;
+          if (index == nextAvailPos)
+             index=nextAvailPos++;
+          else
+             index=nextAvailPos;
+          return ptrStore[curPos].first;
+       }
+       static void free(char *const ptr)
+       {
+          auto loc=std::find_if(std::begin(ptrStore), std::end(ptrStore),[ptr](auto item)
+                   {return ptr== item.first;});
+          index=loc-std::begin(ptrStore);
+          arenaAlloc.deallocate(loc->first,loc->second);
+       }
+    };
     template <typename T>
     using Alloc=CxxAllocatorAdaptorArena<T>;
 
@@ -66,7 +101,7 @@ namespace aa
     template <typename T>
     using recursive_allocator_single=std::scoped_allocator_adaptor<Alloc<T>>;
 
- template <class CharT, class Traits = std::char_traits<CharT>>
+    template <class CharT, class Traits = std::char_traits<CharT>>
     using basic_string = std::basic_string< CharT, Traits,Alloc<CharT>>;
 
     typedef basic_string<char> string;
@@ -79,7 +114,7 @@ namespace aa
               class Hash = std::hash<Key>,
               class Pred = std::equal_to<Key>>
     using unordered_map_pool = std::unordered_map<Key, T, Hash, Pred,
-    boost::pool_allocator<std::pair<const Key,T>,boost::default_user_allocator_malloc_free>>;
+    boost::pool_allocator<std::pair<const Key,T>,ArenaPoolAlloc>>;
 
 //using ipc_row = std::vector<int, alloc<int>>;
 //std::scoped_allocator_adaptor<alloc<ipc_row>>
@@ -89,3 +124,4 @@ namespace aa
    //using Function=cxx_function::unique_function_container<Alloc<FunctionType>,FunctionType>;
     using Function=cxx_function::unique_function<FunctionType>;
 }
+#endif

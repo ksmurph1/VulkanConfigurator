@@ -1,0 +1,9 @@
+<struct type="VkImageCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO" type="VkStructureType"/>
+         <field name="pNext" value="nullptr" type="const void *"/>
+         <field name="viewType" value="VK_IMAGE_VIEW_TYPE_2D" type="VkImageViewType"/>
+         <field name="samples" value="VK_SAMPLE_COUNT_1_BIT" type="VkSampleCountFlagBits"/>
+         <field name="tiling" value="VK_IMAGE_TILING_OPTIMAL" type="VkImageTiling"/>
+         <field name="usage" value="VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT | VK_IMAGE_USAGE_TRANSFER_SRC_BIT"
+         type="VkImageUsageFlags"/>
+</struct>

@@ -14,12 +14,11 @@ class TypeHashFixture : public ::testing::Test, public configuration::Configurat
   protected:
   using hashType= decltype(configuration::getStringHash(0,0.0));
   
-  constexpr inline static float scaleFactor=((float)HashTypeMap::size())/ 
+  inline static HashTypeMap typeMap{};
+  constexpr inline static float scaleFactor=((float)typeMap.size())/ 
   // scale result down so fits in array like container
                std::numeric_limits<stringhash_uint32::value_type>::max();
   
-  HashTypeMap typeMap;
-
   template<std::size_t ...Is>
   constexpr  std::tuple<std::integral_constant<std::size_t,Is>... >  indexing_tuple(std::index_sequence<Is...>)
   { 
@@ -37,7 +36,7 @@ class TypeHashFixture : public ::testing::Test, public configuration::Configurat
     auto indexes = std::make_index_sequence< std::tuple_size_v< std::decay_t<T> > >{};
     return tuple_foreach( indexes, std::forward<T>(tup), std::forward<F>(f));
   }
-  TypeHashFixture() : typeMap() 
+  TypeHashFixture() 
   {
 
   }

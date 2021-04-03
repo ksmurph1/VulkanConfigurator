@@ -7,7 +7,7 @@ namespace configuration
 constexpr char * strcpy(const char* src, char* dst, std::size_t N)
 {
    std::size_t i=0;
-   while(src[i] != '\0' && i < N-1)
+   while(src[i] != '\0' && i < N)
    {
        dst[i]=src[i];
        i++;
@@ -22,7 +22,7 @@ constexpr char * strcpy(const char* src, char* dst, std::size_t N)
 constexpr char * strcpy(const char* src, char** dst, std::size_t N)
 {
    std::size_t i=0;
-   while(src[i] != '\0' && i < N-1)
+   while(src[i] != '\0' && i < N)
    {
        (*dst)[i]=src[i];
        i++;

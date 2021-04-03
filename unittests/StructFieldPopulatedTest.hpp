@@ -2,12 +2,13 @@
 #include <gtest/gtest.h>
 #include "../src/XmlProcessor.hpp"
 
-class FieldPopulatedFixture : public ::testing::Test, public configuration::Configurator
+class FieldPopulatedFixture : public ::testing::Test, protected configuration::Configurator, protected configuration::XmlProcessor
 {
  protected:
    
   constexpr inline static const char * filename="vulkan_settings_fieldtest.xml";
-
+  constexpr inline static const char * filenameOr="vulkan_settings_orenumcomboval.xml";
+  constexpr inline static const char * filenameAnd="vulkan_settings_andenumcomboval.xml";
   // Per-test-suite set-up.
   // Called before the first test in this test suite.
   // Can be omitted if not needed.

@@ -1,71 +1,91 @@
 #pragma once
 
 #include "VulkanConfigurator.hpp"
-#include "folly/src/Function.h"
-#include "enumeration_wrapper.hpp"  
-  namespace configuration
-  {
-   class FieldExtractor final
-   {
-      friend class XmlProcessor;
-         // this class should be a singleton,static variables allowed
-      constexpr inline static std::size_t maxFields=std::numeric_limits<uint8_t>::max();
-
-      constexpr inline static float scaleFactor=1.0f/  // scale result down so fits in array
-                                                // like container-make sure we have twice space
-               (std::numeric_limits<stringhash_uint32::value_type>::max()/(maxFields/2.0f));
-      std::any container;
-
-
-      int8_t fieldPositions[maxFields]={-1};
-
-      aa::Alloc<char> charAlloc;
-
-      template <typename T>
-      void setFieldForStruct(const char*, const std::any&);
-
-      /*template <typename T>
-      void setFieldValue(const T&, const std::size_t, const std::any&);*/
-
-      template <typename T>
-      void setFieldValue(const std::size_t, const std::any&);
-
+#include "enumeration_wrapper.hpp"
+#include "ErrorState.hpp" 
+namespace configuration
+{
    
-      std::any convertToFieldValue(const char*, const char*);
-      
-      template <typename T,typename R>
-      aa::Function<void (const int8_t)> assignValueToField(T&,const R&,std::size_t) noexcept;
+   class FieldExtractor
+   {
+     /* template<bool...> struct bool_pack;
+      template<bool... bs>
+      using all_false=std::is_same<bool_pack<bs...,false>,bool_pack<false,bs...>>;
 
-  /* template <typename T>
-   constexpr bool isVisitable(const boost::hana::basic_type<T>&) const noexcept;*/
-      template <typename T>
-      inline constexpr const char * getTypeName(const boost::hana::basic_type<T>&)
-      {
-      return boost::typeindex::ctti_type_index::type_id_with_cvr<T>().pretty_name();
-      }
+      template <typename R, typename... Ts>
+      using are_not_same=all_false<std::is_same_v<std::decay_t<Ts>,R>...>;*/
+ 
+      protected:
+              // this class should be a singleton,static variables allowed
+      constexpr inline static std::size_t maxFields=std::numeric_limits<uint8_t>::max();
+      constexpr inline static float scaleFactor=(float)maxFields/std::numeric_limits<stringhash_uint32::value_type>::max();
 
-      template <typename T>
-      constexpr bool isFieldInStruct(const boost::hana::basic_type<T>&) noexcept;
+     /* constexpr inline static float scaleFactor=1.0f/  // scale result down so fits in array
+                                                // like container-make sure we have twice space
+               (std::numeric_limits<stringhash_uint32::value_type>::max()/(maxFields/2.0f));*/
 
-      template <typename T>
-      constexpr bool isVisitable() const noexcept;
-      inline std::any getContainer() const noexcept
-      {
-         return container;
-      }
-      template <typename T>
-      constexpr void iterateFieldPositions(const boost::hana::basic_type<enumeration<T>>&)
-      {}
+      uint8_t fieldPositions[maxFields];
 
-      template <typename T>
-      constexpr void iterateFieldPositions(const boost::hana::basic_type<T>&);
-   public:
-      template <typename T,typename=typename std::enable_if_t<std::conjunction_v<
-      std::is_nothrow_default_constructible<T>,std::is_trivially_copy_constructible<T>>>>
-      explicit FieldExtractor(const boost::hana::basic_type<T>& ) : container(T{}),charAlloc()
-      {
+      ErrorState* errState=nullptr;
+      void (* errHandler)(ErrorState*,const ErrorState::ProcessError) noexcept=nullptr;
+          template <typename TYPE, typename T, std::enable_if_t<std::is_pointer_v<T> && std::is_pointer_v<TYPE> &&
+             !std::is_convertible_v<T,TYPE> || std::is_void_v<std::remove_pointer_t<TYPE>> || std::is_void_v<std::remove_pointer_t<T>>,int> = 0>
+          constexpr TYPE getItemArr(T&, const uint8_t);
+          template <typename TYPE, typename T, std::enable_if_t<std::is_pointer_v<T> && std::is_pointer_v<TYPE> &&
+             std::is_convertible_v<T,TYPE> && !std::is_void_v<std::remove_pointer_t<TYPE>> && !std::is_void_v<std::remove_pointer_t<T>>,int> = 0>
+          TYPE getItemArr(T&, const uint8_t);
+          template <typename R,std::enable_if_t<configuration::is_enumeration<R>::value,int> = 0>
+          constexpr typename R::type getFromMap(const char*) const noexcept;
+          template <typename R,std::enable_if_t<!configuration::is_enumeration<R>::value,int> = 0>
+          constexpr R getFromMap(const char*) const noexcept;
+          template <typename R,std::enable_if_t<configuration::is_enumeration<R>::value,int> = 0>
+          constexpr typename R::type getEnumFlag(const char*) const noexcept;
+          
+          explicit FieldExtractor(ErrorState* const processor, void (* const errHandler)
+                         (ErrorState*,const ErrorState::ProcessError) noexcept) noexcept: errState(processor),errHandler(errHandler)
+          {
+              std::memset(fieldPositions, -1, sizeof(fieldPositions));
+          }
+      public:
+       
+          template <typename R,std::enable_if_t<is_enumeration<R>::value,int> = 0>
+          constexpr std::optional<typename R::type> convertToFieldValue(const char*);
+
+          template <typename R,std::enable_if_t<!is_enumeration<R>::value,int> = 0>
+          std::optional<R> convertToFieldValue(const char*);
+
+          // substitute for other combinations-not defined
+         /* template <typename R, typename T, std::enable_if_t<std::is_pointer_v<R> && 
+          !std::is_convertible_v<T,std::remove_pointer_t<R>> && !std::is_convertible_v<T*,R>,int> = 0>
+          R convertToFieldValue(T*, const uint8_t);*/
+
+          template <typename R, typename T, std::enable_if_t<std::is_pointer_v<R>,int> = 0>
+          R convertToFieldValue(T*, const uint8_t);
+
+          template <typename R,typename T, std::enable_if_t<std::is_pointer_v<R> && 
+                                          std::is_pointer_v<std::remove_pointer_t<R>>,int> = 0>
+          R convertToFieldValue(T**, const uint8_t);
+
+          template <typename R, typename T, std::enable_if_t<!is_enumeration<R>::value && !std::is_same_v<char *,T>,int> = 0>
+          std::optional<R> convertToFieldValue(const T&);
+          template <typename R, typename T, std::enable_if_t<is_enumeration<R>::value && !std::is_same_v<char *,T>,int> = 0>
+          constexpr std::optional<typename R::type> convertToFieldValue(const T&);
+          
+          constexpr bool isFieldInStruct(const char*) noexcept;
+
+          virtual ~FieldExtractor() {}
+          //virtual std::any convertToFieldValue(const std::any&, const char*, const char*, const uint8_t) = 0;
+
+          virtual void setFieldForStruct(const char*, const Configurator::UnderlyingTypes& )=0;
          
-      }
-      
+          virtual std::any getContainer() const noexcept
+          {
+             return std::nullptr_t{};
+          }
+          
+          virtual Configurator::WrapperVariant getType() const noexcept=0;
+        
+          virtual bool isVisitable() const noexcept=0;
+          virtual void iterateFieldPositions()=0;
    };
-  }
+}

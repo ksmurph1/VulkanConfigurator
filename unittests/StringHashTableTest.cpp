@@ -7,10 +7,10 @@ TEST_F(HashTableFixture, CheckHashTableSetup)
    const char* key[]={"one"};
    int values[]={1};
    tableType hashTable=tableType::setup(key,values);
-   auto result=hashTable.get("zero");
+   std::optional<int> result=hashTable.get("zero");
    ASSERT_FALSE(result);
    result=hashTable.get("one");
-   ASSERT_EQ(result.value(),1);
+   ASSERT_EQ(result.value_or(0),1);
 }
 
 /*

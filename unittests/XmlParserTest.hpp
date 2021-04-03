@@ -4,7 +4,8 @@
 class XmlProcFixture : public ::testing::Test, public configuration::XmlProcessor
 {
  protected:
-   constexpr inline static uint8_t limit=std::numeric_limits<u_int8_t>::max()/2;
+   // if change in XmlProcessor must change here
+   constexpr inline static uint8_t limit=std::numeric_limits<u_int8_t>::max();
    constexpr inline static float scaleFactor=1.0f/  // scale result down so fits in array
                                                 // like container-make sure we have twice space
                (std::numeric_limits<stringhash_uint32::value_type>::max()/limit);

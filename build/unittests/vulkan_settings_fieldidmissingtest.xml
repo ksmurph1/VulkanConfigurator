@@ -1,0 +1,26 @@
+<struct type="VkAttachmentDescription" id="2">
+         <field name="samples" value="VK_SAMPLE_COUNT_1_BIT" type="VkSampleCountFlagBits"/>
+         <field name="loadOp" value="VK_ATTACHMENT_LOAD_OP_CLEAR" type="VkAttachmentLoadOp"/>
+         <field name="storeOp" value="VK_ATTACHMENT_STORE_OP_STORE" type="VkAttachmentStoreOp"/>
+         <field name="stencilLoadOp" value="VK_ATTACHMENT_LOAD_OP_CLEAR" type="VkAttachmentLoadOp"/>
+         <field name="stencilStoreOp" value="VK_ATTACHMENT_STORE_OP_DONT_CARE" type="VkAttachmentStoreOp"/>
+         <field name="initialLayout" value="VK_IMAGE_LAYOUT_UNDEFINED" type="VkImageLayout"/>
+         <field name="finalLayout" value="VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL" type="VkImageLayout"/>
+</struct>
+<struct type="VkAttachmentDescription" id="1">
+         <field name="samples" value="VK_SAMPLE_COUNT_1_BIT" type="VkSampleCountFlagBits"/>
+         <field name="loadOp" value="VK_ATTACHMENT_LOAD_OP_CLEAR" type="VkAttachmentLoadOp"/>
+         <field name="storeOp" value="VK_ATTACHMENT_STORE_OP_STORE" type="VkAttachmentStoreOp"/>
+         <field name="stencilLoadOp" value="VK_ATTACHMENT_LOAD_OP_DONT_CARE" type="VkAttachmentLoadOp"/>
+         <field name="stencilStoreOp" value="VK_ATTACHMENT_STORE_OP_DONT_CARE" type="VkAttachmentStoreOp"/>
+         <field name="initialLayout" value="VK_IMAGE_LAYOUT_UNDEFINED" type="VkImageLayout"/>
+         <field name="finalLayout" value="VK_IMAGE_LAYOUT_PRESENT_SRC_KHR" type="VkImageLayout"/>
+</struct>
+<struct type="VkRenderPassCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO" type="VkStructureType"/>
+         <field name="attachmentCount" value="2" type="uint32_t"/>
+         <field name="pAttachments" value="&amp;id:1,&amp;id:2" type="const VkAttachmentDescription *"/>
+         <field name="subpassCount" value="1" type="uint32_t"/>
+         <field name="pSubpasses" value="&amp;id:1" type="const VkSubpassDescription *"/>
+         <field name="dependencyCount" value="2" type="uint32_t"/>
+</struct>

@@ -1,0 +1,24 @@
+<struct type="VkAttachmentDescription" id="1">
+         <field name="samples" value="VK_SAMPLE_COUNT_1_BIT" type="VkSampleCountFlagBits"/>
+         <field name="loadOp" value="VK_ATTACHMENT_LOAD_OP_CLEAR" type="VkAttachmentLoadOp"/>
+         <field name="storeOp" value="VK_ATTACHMENT_STORE_OP_STORE" type="VkAttachmentStoreOp"/>
+         <field name="stencilLoadOp" value="VK_ATTACHMENT_LOAD_OP_CLEAR" type="VkAttachmentLoadOp"/>
+         <field name="stencilStoreOp" value="VK_ATTACHMENT_STORE_OP_DONT_CARE" type="VkAttachmentStoreOp"/>
+         <field name="initialLayout" value="VK_IMAGE_LAYOUT_UNDEFINED" type="VkImageLayout"/>
+         <field name="finalLayout" value="VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL" type="VkImageLayout"/>
+</struct>
+<struct type="VkRenderPassCreateInfo">
+         <field name="sType" value="VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO" type="VkStructureType"/>
+         <field name="attachmentCount" value="2" type="uint32_t"/>
+         <field name="pAttachments" value="&amp;id:1" type="const VkAttachmentDescription *"/>
+         <field name="subpassCount" value="1" type="uint32_t"/>
+         <field name="dependencyCount" value="2" type="uint32_t"/>
+         <field name="pDependencies" value="&amp;id:1" type="const VkSubpassDependency *"/>
+</struct>
+<struct type="VkSubpassDependency" id="1">
+         <field name="srcSubpass" value="4294967295" type="uint32_t"/>
+         <field name="dstSubpass" value="0" type="uint32_t"/>
+         <field name="srcStageMask" value="VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT" type="VkPipelineStageFlags"/>
+         <field name="dstStageMask" value="VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT" type="VkPipelineStageFlags"/>
+         <field name="dependencyFlags" value="VK_DEPENDENCY_BY_REGION_BIT" type="VkDependencyFlags"/>
+</struct>

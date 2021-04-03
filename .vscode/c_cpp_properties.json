@@ -8,7 +8,7 @@
             "defines": [],
             "compilerPath": "/usr/bin/g++",
             "intelliSenseMode": "gcc-x64",
-            "cStandard": "c11",
+            "cStandard": "c18",
             "cppStandard": "c++20",
             "compileCommands": "${workspaceFolder}/src/folly/build/compile_commands.json"
         }
