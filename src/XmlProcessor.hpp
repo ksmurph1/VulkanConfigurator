@@ -22,7 +22,8 @@ class XmlProcessor : public tinyxml2::XMLVisitor
    friend class EnumBitOpSplitterBase;
    template <typename T, typename R>
    friend class EnumBitOpSplitter;
-   
+   friend class VulkanMap;
+
       constexpr inline static float scaleFactor=1.0f/  // scale result down so fits in array
                                                 // like container-make sure we have twice space
                (std::numeric_limits<stringhash_uint32::value_type>::max()/MAX_CHAR_SIZE);
@@ -86,7 +87,7 @@ class XmlProcessor : public tinyxml2::XMLVisitor
    void deleteExtractorAlloc(FieldExtractor*) const ;
    void clearAttrMap() noexcept;
    ParentChildFieldLink parChildLink;
-    VulkanMap::ContainerType& structs;
+   VulkanMap::ContainerType structs;
 
 protected:
 
@@ -108,10 +109,14 @@ protected:
     
    bool parseConfig(const char *const);
        constexpr void setError(const ErrorState::ProcessError) noexcept;
-    VulkanMap::ContainerType& getStructs() const noexcept
+    VulkanMap::ContainerType& getStructs() noexcept
        {
            return structs;
        }
+    constexpr ErrorState::ProcessError getError() const noexcept
+    {
+        return (this->error).errorState;
+    }
     public:
        XmlProcessor();
        bool VisitEnter (const tinyxml2::XMLElement &, const tinyxml2::XMLAttribute *) override;

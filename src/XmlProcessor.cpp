@@ -9,10 +9,9 @@
 #include "ChildTypeParentFieldMatching.hpp"
 #include "ChildTypeParentFieldMatching.inl"
 #include "ParentChildFieldLink.hpp"
-#include "Interface.hpp"
 
 configuration::XmlProcessor::XmlProcessor() : doc(),error(),
-       childTypes(),extractor(nullptr),parChildLink(),structs(map.getStrucMap())
+       childTypes(),extractor(nullptr),parChildLink(),structs()
        {}
 constexpr void configuration::XmlProcessor::setError(const ErrorState::ProcessError error) noexcept
 {
